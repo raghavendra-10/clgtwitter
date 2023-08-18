@@ -10,23 +10,24 @@ const Navbar = () => {
           <img src={Logo} alt="Divulge Logo" className="h-9 rounded-full w-9 mr-2" />
           <h1 className="text-white text-3xl font-semibold">DIVULGE</h1>
         </div>
-        <ul className="flex space-x-4">
+        <ul className="flex space-x-4 over">
+        <li>
+            <Link
+              to="/"
+              className="text-white text-xl hover:text-blue-200 transition duration-300"
+            >
+              AboutUs
+            </Link>
+          </li>
           <li>
             <Link
               to="/register"
               className="text-white text-xl hover:text-blue-200 transition duration-300"
             >
-              Register
+              SignUp/SignIn
             </Link>
           </li>
-          <li>
-            <Link
-              to="/login"
-              className="text-white text-xl hover:text-blue-200 transition duration-300"
-            >
-              Login
-            </Link>
-          </li>
+        
         </ul>
       </nav>
     </div>
