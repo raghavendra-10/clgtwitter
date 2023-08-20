@@ -5,7 +5,7 @@ import { IoBookmarksSharp } from 'react-icons/io5';
 import { BiSolidBell, BiSolidHelpCircle, BiLogOutCircle } from 'react-icons/bi';
 import { IoSettings } from 'react-icons/io5';
 
-const Dashboard = () => {
+const Dashboard = ({handleLogout}) => {
   const [open, setOpen] = useState(true);
 
   return (
@@ -101,6 +101,9 @@ const Dashboard = () => {
               className={`text-base font-medium flex-1 duration-200 ${
                 !open && "hidden"
               }`}
+              onClick={() => {
+                handleLogout();
+              }}
             >
               Logout
             </span>
