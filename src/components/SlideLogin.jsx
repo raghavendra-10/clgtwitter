@@ -1,57 +1,51 @@
-import React, { useState} from "react";
-import { auth } from "../firebaseConfig";
+import React, { useState } from "react";
+// import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { UserAuth } from "../context/AuthContext";
 
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+// import {
+//   createUserWithEmailAndPassword,
+//   signInWithEmailAndPassword,
+// } from "firebase/auth";
 import "./login.css";
 import { FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa";
 
-const SlideLogin = ({ setIsAuthenticated }) => {
+const SlideLogin = () => {
   const [isSignup, setIsSignup] = useState(false);
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
   const navigate = useNavigate();
+  const { signIn } = UserAuth();
 
-  const emailPattern = /^[a-zA-Z0-9._%+-]+@vishnu\.edu\.in$/;
-  const register = async () => {
+  const { createUser } = UserAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     try {
-      if (!emailPattern.test(registerEmail)) {
-        toast.error("Please use a valid vishnu.edu.in email.");
-        return;
-      }
-
-      await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
-
-      toast.success("Registered successfully!");
-    } catch (error) {
-      toast.error(error.message);
+      await createUser(email, password);
+      toast.success("Registered Successfully");
+    } catch (e) {
+      toast.error(e.message);
     }
   };
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
 
-  const login = async () => {
     try {
-      if (!emailPattern.test(loginEmail)) {
-        toast.error("Please use a valid vishnu.edu.in email.");
-        return;
-      }
-
-      await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-
-      setIsAuthenticated(true);
+      await signIn(loginEmail, loginPassword);
       navigate("/dashboard");
-    } catch (error) {
-      toast.error("Login failed. Please check your credentials.");
+    } catch (e) {
+      toast.error(e.message);
     }
   };
 
@@ -60,15 +54,15 @@ const SlideLogin = ({ setIsAuthenticated }) => {
   };
 
   return (
-   
-     
     <div className="body">
-      
       <div className={`cont ${isSignup ? "right-panel-active" : ""}`}>
         <div className="form-cont sign-up-cont">
-        <div className="font-thin text-sm pl-2 pt-1 "><Link to="/"><FontAwesomeIcon icon={faHome} /></Link></div>
-          <div className="form">
-        
+          <div className="font-thin text-sm pl-2 pt-1 ">
+            <Link to="/">
+              <FontAwesomeIcon icon={faHome} />
+            </Link>
+          </div>
+          <form className="form" onSubmit={handleSubmit}>
             <h1 className="h1 text-3xl">Create Account</h1>
             <div className="social-cont">
               <a href="/" className="a social">
@@ -88,7 +82,7 @@ const SlideLogin = ({ setIsAuthenticated }) => {
               type="email"
               name="email"
               onChange={(event) => {
-                setRegisterEmail(event.target.value);
+                setEmail(event.target.value);
               }}
               placeholder="@vishnu.edu.in"
             />
@@ -97,18 +91,22 @@ const SlideLogin = ({ setIsAuthenticated }) => {
               type="password"
               name="password"
               onChange={(event) => {
-                setRegisterPassword(event.target.value);
+                setPassword(event.target.value);
               }}
               placeholder="Password"
             />
-            <button className="button" onClick={register}>
+            <button className="button" type="submit">
               SignUp
             </button>
-          </div>
+          </form>
         </div>
         <div className="form-cont sign-in-cont">
-        <div className="font-thin text-sm pl-2 pt-1 "><Link to="/"><FontAwesomeIcon icon={faHome} /></Link></div>
-          <div className="form">
+          <div className="font-thin text-sm pl-2 pt-1 ">
+            <Link to="/">
+              <FontAwesomeIcon icon={faHome} />
+            </Link>
+          </div>
+          <form onSubmit={handleLoginSubmit} className="form">
             <h1 className="h1 text-3xl">Sign In</h1>
             <div className="social-cont">
               <a href="/" className="a social">
@@ -141,10 +139,10 @@ const SlideLogin = ({ setIsAuthenticated }) => {
               placeholder="Password"
             />
             {/* <a href="/" className="a">Forgot Your Password</a> */}
-            <button className="button" onClick={login}>
+            <button className="button" type="submit">
               Sign In
             </button>
-          </div>
+          </form>
         </div>
         <div className="overlay-cont">
           <div className="overlay">
@@ -170,7 +168,6 @@ const SlideLogin = ({ setIsAuthenticated }) => {
         </div>
       </div>
     </div>
-   
   );
 };
 

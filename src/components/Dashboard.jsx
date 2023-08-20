@@ -4,9 +4,22 @@ import { CgProfile } from 'react-icons/cg';
 import { IoBookmarksSharp } from 'react-icons/io5';
 import { BiSolidBell, BiSolidHelpCircle, BiLogOutCircle } from 'react-icons/bi';
 import { IoSettings } from 'react-icons/io5';
+import { UserAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-const Dashboard = ({handleLogout}) => {
+const Dashboard = () => {
   const [open, setOpen] = useState(true);
+  const {user,logout}=UserAuth()
+  const navigate = useNavigate();
+
+  const handleLogout=async () => {
+    try{
+      await logout();
+      navigate('/');
+    }catch(e){
+      console.log(e.message);
+    }
+  }
 
   return (
     <div className="flex">
@@ -101,9 +114,7 @@ const Dashboard = ({handleLogout}) => {
               className={`text-base font-medium flex-1 duration-200 ${
                 !open && "hidden"
               }`}
-              onClick={() => {
-                handleLogout();
-              }}
+              onClick={handleLogout}
             >
               Logout
             </span>
@@ -114,6 +125,7 @@ const Dashboard = ({handleLogout}) => {
 
       <div className="p-7">
         <h1 className="text-2xl">Cool Buddy</h1>
+        <p>user email:{user && user.email}</p>
       </div>
     </div>
   );
