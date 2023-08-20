@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
 
-const Dashboard = () => {
+const Dashboard = ({ handleLogout }) => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <div>
+      <h1>Welcome to the Dashboard</h1>
+      <button
+        onClick={() => {
+          handleLogout();
+        }}
+      >
+        LogOut
+      </button>
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;
