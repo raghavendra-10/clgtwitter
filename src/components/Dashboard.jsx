@@ -1,21 +1,12 @@
 import React, { useState } from 'react';
 import { HiMenuAlt1 } from 'react-icons/hi';
-
 import { CgProfile } from 'react-icons/cg';
 import { IoBookmarksSharp } from 'react-icons/io5';
 import { BiSolidBell, BiSolidHelpCircle, BiLogOutCircle } from 'react-icons/bi';
 import { IoSettings } from 'react-icons/io5';
-/*Developed by JanBasha with the help of youtube*/
+
 const Dashboard = () => {
   const [open, setOpen] = useState(true);
-  const Menus = [
-    { title: "Profile", icon: <CgProfile /> },
-    { title: "Bookmarks", icon: <IoBookmarksSharp /> },
-    { title: "Reminders", icon: <BiSolidBell /> },
-    { title: "Setting", icon: <IoSettings /> },
-    { title: "Help Center", icon: <BiSolidHelpCircle /> },
-    { title: "Logout", icon: <BiLogOutCircle /> },
-  ];
 
   return (
     <div className="flex">
@@ -41,26 +32,80 @@ const Dashboard = () => {
           </h1>
         </div>
 
-        
-
         <ul className="pt-2">
-          {Menus.map((menu, index) => (
-            <li
-              key={index}
-              className="text-gray-800 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-100 rounded-md mt-2"
+          <li
+            className="text-gray-800 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-100 rounded-md mt-2"
+          >
+            <span className="text-2xl block"><CgProfile /></span>
+            <span
+              className={`text-base font-medium flex-1 duration-200 ${
+                !open && "hidden"
+              }`}
             >
-              <span className="text-2xl block">
-                {menu.icon}
-              </span>
-              <span
-                className={`text-base font-medium flex-1 duration-200 ${
-                  !open && "hidden"
-                }`}
-              >
-                {menu.title}
-              </span>
-            </li>
-          ))}
+              Profile
+            </span>
+          </li>
+          <li
+            className="text-gray-800 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-100 rounded-md mt-2"
+          >
+            <span className="text-2xl block"><IoBookmarksSharp /></span>
+            <span
+              className={`text-base font-medium flex-1 duration-200 ${
+                !open && "hidden"
+              }`}
+            >
+              Bookmarks
+            </span>
+          </li>
+          <li
+            className="text-gray-800 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-100 rounded-md mt-2"
+          >
+            <span className="text-2xl block"><BiSolidBell /></span>
+            <span
+              className={`text-base font-medium flex-1 duration-200 ${
+                !open && "hidden"
+              }`}
+            >
+              Remainders
+            </span>
+          </li>
+          <li
+            className="text-gray-800 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-100 rounded-md mt-2"
+          >
+            <span className="text-2xl block"><IoSettings/></span>
+            <span
+              className={`text-base font-medium flex-1 duration-200 ${
+                !open && "hidden"
+              }`}
+            >
+              Settings
+            </span>
+          </li>
+          <li
+            className="text-gray-800 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-100 rounded-md mt-2"
+          >
+            <span className="text-2xl block"><BiSolidHelpCircle /></span>
+            <span
+              className={`text-base font-medium flex-1 duration-200 ${
+                !open && "hidden"
+              }`}
+            >
+              Help Center
+            </span>
+          </li>
+          <li
+            className="text-gray-800 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-100 rounded-md mt-2"
+          >
+            <span className="text-2xl block"><BiLogOutCircle /></span>
+            <span
+              className={`text-base font-medium flex-1 duration-200 ${
+                !open && "hidden"
+              }`}
+            >
+              Logout
+            </span>
+          </li>
+          
         </ul>
       </div>
 
