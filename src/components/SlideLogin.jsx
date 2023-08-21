@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { UserAuth } from "../context/AuthContext";
-
+import { auth } from "../firebaseConfig";
+import { sendEmailVerification } from "firebase/auth";
 
 // import {
 //   createUserWithEmailAndPassword,
@@ -34,17 +35,23 @@ const SlideLogin = () => {
 
     try {
       await createUser(email, password);
-      toast.success("Registered Successfully");
+      await sendEmailVerification(auth.currentUser); // Use the auth object
+      toast.success("Registered Successfully. Please check your email for verification.");
     } catch (e) {
       toast.error(e.message);
     }
   };
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-
     try {
       await signIn(loginEmail, loginPassword);
-      navigate("/dashboard");
+  
+      const user = auth.currentUser;
+      if (user && !user.emailVerified) {
+        toast.warning("Please verify your email before logging in.");
+      } else {
+        navigate("/dashboard");
+      }
     } catch (e) {
       toast.error(e.message);
     }

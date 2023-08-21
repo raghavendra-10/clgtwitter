@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  sendEmailVerification
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 
@@ -11,8 +12,14 @@ const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
-  const createUser = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+
+  const createUser = async (email, password) => { // Mark the function as async
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  
+    if (userCredential.user) {
+      // Send email verification
+      await sendEmailVerification(userCredential.user);
+    }
   };
 
   const signIn = (loginEmail, loginPassword) => {
