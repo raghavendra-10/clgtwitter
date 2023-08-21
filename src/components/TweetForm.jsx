@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { db } from '../firebaseConfig'; // Import your Firebase instance
+import { db } from '../firebaseConfig';
 import { collection, addDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const TweetForm = ({ user }) => {
   const [tweet, setTweet] = useState('');
 
@@ -12,8 +13,8 @@ const TweetForm = ({ user }) => {
     try {
       await addDoc(collection(db, 'tweets'), {
         content: tweet,
-        authorId: user.uid, // Store the UID of the logged-in user
-        authorEmail: user.email, // Store the email of the logged-in user
+        authorId: user.uid,
+        authorEmail: user.email,
         createdAt: new Date(),
       });
       setTweet('');
@@ -23,17 +24,24 @@ const TweetForm = ({ user }) => {
     }
   };
 
-
   return (
-    <div>
+    <div className="p-4 bg-white rounded-md shadow-md">
       <form onSubmit={handleSubmit}>
         <textarea
           value={tweet}
           onChange={(e) => setTweet(e.target.value)}
           placeholder="What's on your mind?"
-          rows={4}
+          rows={6}
+          className="w-full p-2 border rounded-md resize-none focus:outline-none focus:border-blue-500"
         />
-        <button type="submit">Tweet</button>
+        <div className="flex justify-end mt-2">
+          <button
+            type="submit"
+            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          >
+            Tweet
+          </button>
+        </div>
       </form>
     </div>
   );

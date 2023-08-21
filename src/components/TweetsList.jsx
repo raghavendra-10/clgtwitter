@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { db } from '../firebaseConfig'; // Make sure the path is correct
+import { db } from '../firebaseConfig';
 import { collection, onSnapshot } from "firebase/firestore";
+import Tweet from './Tweet';
 
 const TweetsList = () => {
   const [tweets, setTweets] = useState([]);
@@ -26,14 +27,14 @@ const TweetsList = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Tweets</h2>
+    <div className=''>
       {tweets.map((tweet) => (
-        <div key={tweet.id}>
-          <p>{tweet.content}</p>
-          <p>Author: {tweet.authorEmail}</p>
-          <p>Time: {tweet.createdAt.toDate().toLocaleString()}</p>
-        </div>
+        <Tweet
+          key={tweet.id}
+          username={tweet.authorEmail}
+          content={tweet.content}
+          timestamp={tweet.createdAt.toDate().toLocaleString()}
+        />
       ))}
     </div>
   );

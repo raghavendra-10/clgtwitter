@@ -25,9 +25,9 @@ const Dashboard = () => {
 
 
   return (
-    <div className="flex">
+    <div className="flex ">
       <div
-        className={`bg-blue-500 h-screen p-5 pt-8 ${
+        className={`bg-blue-400 min-h-screen p-5 pt-8 ${
           open ? "w-72" : "w-20"
         } duration-300 relative`}
       >
@@ -40,14 +40,15 @@ const Dashboard = () => {
 
         <div className="inline-flex">
           <h1
-            className={`text-white font-medium text-2xl duration-300 origin-center ${
+            className={`text-white font-medium text-3xl duration-300 origin-center ${
               !open && "scale-0"
             }`}
           >
-            <span className="text-green-500">DI</span>VULGE
+            <span className="text-green-700">DI</span>VULGE
           </h1>
+          
         </div>
-
+        <p className='text-sm'>user : {user && user.email}</p>
         <ul className="pt-2">
           <li
             className="text-gray-800 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-100 rounded-md mt-2"
@@ -125,11 +126,12 @@ const Dashboard = () => {
           
         </ul>
       </div>
-      <p>user email:{user && user.email}</p>
-      <div className="p-7">
+      
+      <div className="flex-grow p-4 max-w-screen-xl mx-auto">
       <TweetForm user={user} />
+      <div className='h-screen overflow-y-auto'>
         <TweetsList/>
-        
+        </div>
       </div>
     </div>
   );
