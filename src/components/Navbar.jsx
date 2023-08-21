@@ -13,7 +13,7 @@ const Navbar = () => {
         <ul className="flex space-x-4 over">
         <li>
             <Link
-              to="/aboutus"
+              to="/"
               className="text-white text-xl hover:text-blue-200 transition duration-300"
             >
               AboutUs

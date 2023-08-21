@@ -5,7 +5,7 @@ import SlideLogin from "./components/SlideLogin";
 import Dashboard from "./components/Dashboard";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoutes from "./components/ProtectedRoutes";
-import MessageDisplay from "./components/MessageDisplay";
+
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<SlideLogin />} />
-            <Route path="/aboutus" element={<MessageDisplay />} />
+            
             <Route
               path="/dashboard"
               element={
