@@ -22,7 +22,7 @@ const Home = () => {
           </div>
         </div>
         <div
-          className="bg-cover bg-center w-full sm:w-1/2"
+          className="bg-cover bg-center w-full "
           style={{ backgroundImage: `url(${Logo})` }}
         />
       </div>
