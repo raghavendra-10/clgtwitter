@@ -23,7 +23,7 @@ const Dashboard = () => {
 
 
   return (
-    <div className="flex">
+    <div className="flex ">
       <div
         className={`bg-blue-500 h-screen p-5 pt-8 ${
           open ? "w-72" : "w-20"
@@ -36,12 +36,12 @@ const Dashboard = () => {
           onClick={() => setOpen(!open)}
         />
 
-        <div className="inline-flex">
+        <div className="inline-flex ">
           <h1
             className={`text-white font-medium text-2xl duration-300 origin-center ${
               !open && "scale-0"
             }`}
-          >
+          > 
             <span className="text-green-500">DI</span>VULGE
           </h1>
         </div>
