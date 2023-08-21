@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { UserAuth } from "../context/AuthContext";
 
+
 // import {
 //   createUserWithEmailAndPassword,
 //   signInWithEmailAndPassword,
@@ -63,8 +64,8 @@ const SlideLogin = () => {
             </Link>
           </div>
           <form className="form" onSubmit={handleSubmit}>
-            <h1 className="h1 text-3xl">Create Account</h1>
-            <div className="social-cont">
+            <h1 className="h1 sm:text-3xl">Create Account</h1>
+            <div className="flex social-cont">
               <a href="/" className="a social">
                 <FaFacebookF />
               </a>
@@ -78,7 +79,7 @@ const SlideLogin = () => {
             <span className="span">or use your email for registration</span>
             {/* <input className="input" type="text" name="name" value={email}  placeholder="Name" /> */}
             <input
-              className="input"
+              className="input  "
               type="email"
               name="email"
               onChange={(event) => {
@@ -87,7 +88,7 @@ const SlideLogin = () => {
               placeholder="@vishnu.edu.in"
             />
             <input
-              className="input"
+              className="input "
               type="password"
               name="password"
               onChange={(event) => {
@@ -107,8 +108,8 @@ const SlideLogin = () => {
             </Link>
           </div>
           <form onSubmit={handleLoginSubmit} className="form">
-            <h1 className="h1 text-3xl">Sign In</h1>
-            <div className="social-cont">
+            <h1 className="h1 sm:text-3xl">Sign In</h1>
+            <div className="flex social-cont">
               <a href="/" className="a social">
                 <FaFacebookF />
               </a>
@@ -121,7 +122,7 @@ const SlideLogin = () => {
             </div>
             <span className="span">or use your account</span>
             <input
-              className="input"
+              className="input "
               type="email"
               name="email"
               onChange={(event) => {
@@ -130,7 +131,7 @@ const SlideLogin = () => {
               placeholder="@vishnu.edu.in"
             />
             <input
-              className="input"
+              className="input "
               type="password"
               name="password"
               onChange={(event) => {

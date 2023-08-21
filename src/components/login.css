@@ -1,4 +1,93 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+@media (max-width: 640px) {
+  /* Modify body styles */
+  .body {
+    height: auto;
+    margin: 0;
+  }
+
+  /* Modify container styles */
+  .cont {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  /* Modify form container styles */
+  .form-cont {
+    position: relative;
+    width: 100%;
+    top: 0;
+    height: auto;
+    transition: none;
+  }
+
+  .cont.right-panel-active .sign-up-cont {
+    transform: none;
+    opacity: 1;
+    z-index: 5;
+    animation: none;
+  }
+
+  /* Modify overlay container styles */
+  .overlay-cont {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    transition: none;
+    left: 0;
+    transform: none;
+  }
+
+  .cont.right-panel-active .overlay-cont {
+    transform: none;
+  }
+
+  /* Modify overlay styles */
+  .overlay {
+    background: #2196F3;
+    background-size: cover;
+    background-position: 0 0;
+    position: relative;
+    left: 0;
+    width: 100%;
+    transform: none;
+    transition: none;
+  }
+
+  .cont.right-panel-active .overlay {
+    transform: none;
+  }
+
+  /* Modify overlay panel styles */
+  .overlay-panel {
+    position: relative;
+    width: 100%;
+    transform: none;
+    transition: none;
+    padding: 20px;
+  }
+
+  .overlay-left,
+  .overlay-right {
+    transform: none;
+  }
+
+  /* Modify social icon styles */
+  .social-cont {
+    margin: 20px 0;
+  }
+
+  .social-cont .a {
+    margin: 0 10px;
+    height: 30px;
+    width: 30px;
+  }
+}
 
 
 .body {
