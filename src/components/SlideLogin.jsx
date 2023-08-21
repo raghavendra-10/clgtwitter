@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { UserAuth } from "../context/AuthContext";
 
+
 // import {
 //   createUserWithEmailAndPassword,
 //   signInWithEmailAndPassword,

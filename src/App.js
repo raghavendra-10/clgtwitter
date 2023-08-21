@@ -5,6 +5,9 @@ import SlideLogin from "./components/SlideLogin";
 import Dashboard from "./components/Dashboard";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import Profile from "./components/Profile";
+import TweetForm from "./components/TweetForm";
+import TweetsList from "./components/TweetsList";
 
 
 
@@ -25,6 +28,23 @@ function App() {
                 </ProtectedRoutes>
               }
             />
+            <Route
+             
+              element={
+                <ProtectedRoutes>
+                  <TweetForm />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+             
+             element={
+               <ProtectedRoutes>
+                 <TweetsList/>
+               </ProtectedRoutes>
+             }
+           />
+            <Route path="/profile" element={<ProtectedRoutes><Profile /></ProtectedRoutes>} />
           </Routes>
         </BrowserRouter>
       </AuthContextProvider>

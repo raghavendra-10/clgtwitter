@@ -6,16 +6,18 @@ import { BiSolidBell, BiSolidHelpCircle, BiLogOutCircle } from 'react-icons/bi';
 import { IoSettings } from 'react-icons/io5';
 import { UserAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import TweetsList from './TweetsList';
+import TweetForm from './TweetForm';
 
 const Dashboard = () => {
   const [open, setOpen] = useState(true);
-  const {user,logout}=UserAuth()
+  const {user,logout}=UserAuth();
   const navigate = useNavigate();
 
   const handleLogout=async () => {
     try{
       await logout();
-      navigate('/');
+      navigate('/register');
     }catch(e){
       console.log(e.message);
     }
@@ -122,10 +124,11 @@ const Dashboard = () => {
           
         </ul>
       </div>
-
+      <p>user email:{user && user.email}</p>
       <div className="p-7">
-        <h1 className="text-2xl">Cool Buddy</h1>
-        <p>user email:{user && user.email}</p>
+      <TweetForm user={user} />
+        <TweetsList/>
+        
       </div>
     </div>
   );
