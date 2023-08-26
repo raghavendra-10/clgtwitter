@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { AiOutlineLike, AiOutlineShareAlt } from 'react-icons/ai';
 
 const Tweet = ({ username, content, timestamp }) => {
+  const [likeCount, setLikeCount] = useState(0);
+
+  const handleLike = () => {
+    setLikeCount(likeCount + 1);
+  };
+
   return (
     <div className="bg-white p-4 border rounded-lg shadow-md transition duration-50 ease-out hover:ease-in hover:border-navy-300 hover:border-2 mb-4">
       <div className="flex items-start">
@@ -16,12 +23,12 @@ const Tweet = ({ username, content, timestamp }) => {
           </div>
           <p className="text-gray-700 mt-1">{content}</p>
           <div className="mt-2">
-            <button className="text-blue-500 hover:underline text-sm">
-              Like
+            <button className="text-blue-500 hover:underline text-sm" onClick={handleLike}>
+              <AiOutlineLike /> Like ({likeCount})
             </button>
 
             <button className="text-gray-500 hover:underline text-sm ml-4">
-              Share
+              <AiOutlineShareAlt /> Share
             </button>
           </div>
         </div>

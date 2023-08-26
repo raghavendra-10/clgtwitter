@@ -45,7 +45,7 @@ const Dashboard = () => {
             }`}
 
           > 
-            <span className="text-green-500">DI</span>VULGE
+            <span className="text-green-600">DI</span>VULGE
 
           </h1>
           
