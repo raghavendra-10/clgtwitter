@@ -7,14 +7,14 @@ const Navbar = () => {
     <div className="bg-blue-500 py-4">
       <nav className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <img src={Logo} alt="Divulge Logo" className="sm:h-9 h-6 w-6 rounded-full sm:w-9 mr-2" />
+          <img src={Logo} alt="Divulge Logo" className="h-8  rounded-full w-8 mr-2" />
           <h1 className="text-white text-lg sm:text-3xl font-semibold">DIVULGE</h1>
         </div>
         <ul className="flex space-x-2 sm:space-x-4 over">
         <li>
             <Link
               to="/"
-              className="text-white text-xl hover:text-blue-200 transition duration-300"> 
+              className="text-white sm:text-xl hover:text-blue-200 transition duration-300"> 
               AboutUs
             </Link>
           </li>

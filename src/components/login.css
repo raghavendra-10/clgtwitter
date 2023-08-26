@@ -1,104 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
-@media (max-width: 640px) {
-  /* Modify body styles */
-  .body {
-    height: auto;
-    margin: 0;
-  }
 
-  /* Modify container styles */
-  .cont {
-    width: 100%;
-    height: auto;
-    min-height: 0;
-    box-shadow: none;
-    border-radius: 0;
-    overflow: visible;
-  }
-
-  /* Modify form container styles */
-  .form-cont {
-    position: relative;
-    width: 100%;
-    top: 0;
-    height: auto;
-    transition: none;
-  }
-
-  .cont.right-panel-active .sign-up-cont {
-    transform: none;
-    opacity: 1;
-    z-index: 5;
-    animation: none;
-  }
-
-  /* Modify overlay container styles */
-  .overlay-cont {
-    position: relative;
-    width: 100%;
-    height: auto;
-    overflow: visible;
-    transition: none;
-    left: 0;
-    transform: none;
-  }
-
-  .cont.right-panel-active .overlay-cont {
-    transform: none;
-  }
-
-  /* Modify overlay styles */
-  .overlay {
-    background: #2196F3;
-    background-size: cover;
-    background-position: 0 0;
-    position: relative;
-    left: 0;
-    width: 100%;
-    transform: none;
-    transition: none;
-  }
-
-  .cont.right-panel-active .overlay {
-    transform: none;
-  }
-
-  /* Modify overlay panel styles */
-  .overlay-panel {
-    position: relative;
-    width: 100%;
-    transform: none;
-    transition: none;
-    padding: 20px;
-  }
-
-  .overlay-left,
-  .overlay-right {
-    transform: none;
-  }
-
-  /* Modify social icon styles */
-  .social-cont {
-    margin: 20px 0;
-  }
-
-  .social-cont .a {
-    margin: 0 10px;
-    height: 30px;
-    width: 30px;
-  }
-}
 
 
 .body {
   background: #f6f5f7;
   display: flex;
+
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
   height: 103vh;
-  margin: -20px 0 50px;
+  
 }
 
 .h1 {
@@ -183,7 +96,7 @@
   overflow: hidden;
   width: 768px;
   max-width: 100%;
-  min-height: 480px;
+  min-height: 400px;
 }
 
 .form-cont {
@@ -298,17 +211,15 @@
   transform: translateX(20%);
 }
 
-.social-cont {
-  margin: 20px 0;
-}
 
-.social-cont .a {
-  border: 1px solid #dddddd;
-  border-radius: 50%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 5px;
-  height: 40px;
-  width: 40px;
+
+
+@media screen and (max-width: 600px) {
+  
+  .form{
+    padding: 10px;
+  }
+  .overlay-panel{
+    padding: 10px;
+  }
 }

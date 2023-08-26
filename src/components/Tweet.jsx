@@ -12,10 +12,10 @@ const Tweet = ({ username, content, timestamp }) => {
         <div className="flex-grow">
           <div className="flex items-center justify-between">
             <p className="text-gray-800 font-semibold">{username}</p>
-            <p className="text-gray-600 text-sm">{timestamp}</p>
+            
           </div>
           <p className="text-gray-700 mt-1">{content}</p>
-          <div className="mt-2">
+          <div className="mt-2 flex">
             <button className="text-blue-500 hover:underline text-sm">
               Like
             </button>
@@ -23,6 +23,7 @@ const Tweet = ({ username, content, timestamp }) => {
             <button className="text-gray-500 hover:underline text-sm ml-4">
               Share
             </button>
+            <p className="text-gray-600 text-sm px-2">{timestamp}</p>
           </div>
         </div>
       </div>

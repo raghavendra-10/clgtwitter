@@ -8,14 +8,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { UserAuth } from "../context/AuthContext";
 import { auth } from "../firebaseConfig";
-import { sendEmailVerification } from "firebase/auth";
+import { sendEmailVerification,sendPasswordResetEmail } from "firebase/auth";
 
 // import {
 //   createUserWithEmailAndPassword,
 //   signInWithEmailAndPassword,
 // } from "firebase/auth";
 import "./login.css";
-import { FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa";
+// import { FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa";
 
 const SlideLogin = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -60,6 +60,14 @@ const SlideLogin = () => {
   const toggleForm = () => {
     setIsSignup(!isSignup);
   };
+  const handleForgotPassword = async () => {
+    try {
+      await sendPasswordResetEmail(loginEmail);
+      toast.success("Password reset email sent. Check your inbox.");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <div className="body">
@@ -72,7 +80,7 @@ const SlideLogin = () => {
           </div>
           <form className="form" onSubmit={handleSubmit}>
             <h1 className="h1 sm:text-3xl">Create Account</h1>
-            <div className="flex social-cont">
+            {/* <div className="flex social-cont">
               <a href="/" className="a social">
                 <FaFacebookF />
               </a>
@@ -82,8 +90,8 @@ const SlideLogin = () => {
               <a href="/" className="a social">
                 <FaTwitter />
               </a>
-            </div>
-            <span className="span">or use your email for registration</span>
+            </div> */}
+            {/* <span className="span">or use your email for registration</span> */}
             {/* <input className="input" type="text" name="name" value={email}  placeholder="Name" /> */}
             <input
               className="input  "
@@ -116,7 +124,7 @@ const SlideLogin = () => {
           </div>
           <form onSubmit={handleLoginSubmit} className="form">
             <h1 className="h1 sm:text-3xl">Sign In</h1>
-            <div className="flex social-cont">
+            {/* <div className="flex social-cont">
               <a href="/" className="a social">
                 <FaFacebookF />
               </a>
@@ -126,8 +134,8 @@ const SlideLogin = () => {
               <a href="/" className="a social">
                 <FaTwitter />
               </a>
-            </div>
-            <span className="span">or use your account</span>
+            </div> */}
+            {/* <span className="span">or use your account</span> */}
             <input
               className="input "
               type="email"
@@ -146,7 +154,9 @@ const SlideLogin = () => {
               }}
               placeholder="Password"
             />
-            {/* <a href="/" className="a">Forgot Your Password</a> */}
+            <button className="text-[12px]" onClick={handleForgotPassword}>
+            Forgot Your Password?
+          </button>
             <button className="button" type="submit">
               Sign In
             </button>
@@ -155,7 +165,7 @@ const SlideLogin = () => {
         <div className="overlay-cont">
           <div className="overlay">
             <div className="overlay-panel overlay-left">
-              <h1 className="h1 text-3xl">Welcome Back!</h1>
+              <h1 className="h1 sm:text-3xl">Welcome Back!</h1>
               <p className="p">
                 To keep connected with us please login with your personal info
               </p>
@@ -163,8 +173,8 @@ const SlideLogin = () => {
                 Sign In
               </button>
             </div>
-            <div className="overlay-panel overlay-right">
-              <h1 className="h1 text-3xl">Hello, Friend!</h1>
+            <div className="overlay-panel overlay-right ">
+              <h1 className="h1 sm:text-3xl">Hello, Friend!</h1>
               <p className="p">
                 Enter your details and start the journey with us
               </p>
