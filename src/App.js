@@ -11,6 +11,7 @@ import TweetsList from "./components/TweetsList";
 
 
 
+
 function App() {
 
   return (
@@ -21,11 +22,20 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<SlideLogin />} />
             
+            
             <Route
               path="/dashboard"
               element={
                 <ProtectedRoutes>
                   <Dashboard />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoutes>
+                  <Profile />
                 </ProtectedRoutes>
               }
             />

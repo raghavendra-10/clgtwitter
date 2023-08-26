@@ -4,10 +4,10 @@ import Logo from "../assests/newlogo.png";
 
 const Home = () => {
   return (
-    <div className="bg-white min-h-screen">
+    <div>
       <Navbar />
-      <div className="flex min-h-screen">
-        <div className="w-1/2 bg-green-400 flex flex-col items-center justify-center px-12">
+      <div className="bg-cover bg-center w-full flex justify-center  min-h-screen"style={{ backgroundImage: `url(${Logo})` }}>
+        <div className=" flex flex-col items-center justify-center ">
           {/* <div className="text-5xl font-bold text-gray-800 mb-4">DIVULGE</div> */}
           <div className="bg-white p-8 rounded-lg shadow-lg text-center">
             <div className="sm:text-5xl font-bold text-gray-800 mb-4">
@@ -21,10 +21,10 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div
-          className="bg-cover bg-center w-full "
+        {/* <div
+          className="bg-cover bg-center w-full  "
           style={{ backgroundImage: `url(${Logo})` }}
-        />
+        /> */}
       </div>
     </div>
   );

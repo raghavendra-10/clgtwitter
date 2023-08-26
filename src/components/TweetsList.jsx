@@ -27,7 +27,7 @@ const TweetsList = () => {
   }, []);
 
   return (
-    <div className=''>
+    <div className='pt-2'>
       {tweets.map((tweet) => (
         <Tweet
           key={tweet.id}
