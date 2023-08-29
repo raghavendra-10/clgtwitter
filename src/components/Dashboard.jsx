@@ -1,14 +1,10 @@
 import React from 'react';
-
-// import { IoSettings } from 'react-icons/io5';
 import { UserAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import TweetsList from './TweetsList';
 import TweetForm from './TweetForm';
-// import { sendEmailVerification } from 'firebase/auth';
-// import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const Dashboard = () => {
+const Dashboard = ({profilePhotoURL}) => {
  
   const {user,logout}=UserAuth();
   const navigate = useNavigate();
@@ -37,7 +33,7 @@ const Dashboard = () => {
           Logout
         </button>
         </div>
-        <TweetForm user={user} />
+        <TweetForm user={user} profilePhotoURL={profilePhotoURL}/>
         <div className='h-screen overflow-y-auto'>
           <TweetsList/>
           <div className="text-center mt-4">

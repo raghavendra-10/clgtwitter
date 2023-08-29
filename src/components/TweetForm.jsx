@@ -4,7 +4,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const TweetForm = ({ user }) => {
+const TweetForm = ({ user, profilePhotoURL }) => {
   const [tweet, setTweet] = useState('');
 
   const handleSubmit = async (e) => {
@@ -16,6 +16,7 @@ const TweetForm = ({ user }) => {
         authorId: user.uid,
         authorEmail: user.email,
         createdAt: new Date(),
+        
       });
       setTweet('');
       toast.success("Tweeted Successfully");
@@ -27,6 +28,9 @@ const TweetForm = ({ user }) => {
   return (
     <div className="p-4 bg-white rounded-md shadow-md">
       <form onSubmit={handleSubmit}>
+      {profilePhotoURL && (
+          <img src={profilePhotoURL} alt="Profile" className="w-12 h-12 rounded-full mr-3" />
+        )}
         <textarea
           value={tweet}
           onChange={(e) => setTweet(e.target.value)}

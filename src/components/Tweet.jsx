@@ -1,12 +1,13 @@
 import React from 'react';
 
-const Tweet = ({ username, content, timestamp }) => {
+const Tweet = ({ username, content, timestamp,profilePhotoURL}) => {
   return (
     <div className="bg-white p-4 border rounded-lg shadow-md transition duration-50 ease-out hover:ease-in hover:border-navy-300 hover:border-2 mb-4">
       <div className="flex items-start">
-        <img
-          className="w-12 h-12 rounded-full mr-3"
-          src="https://via.placeholder.com/50"
+        
+      <img
+          className="w-20 h-20 object-cover  rounded-full mr-3"
+          src={profilePhotoURL||"https://via.placeholder.com/50"}
           alt="User Avatar"
         />
         <div className="flex-grow">

@@ -15,7 +15,9 @@ function App() {
 
   return (
     <div className="App">
+  
       <AuthContextProvider>
+      
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -33,7 +35,9 @@ function App() {
               path="/profile"
               element={
                 <ProtectedRoutes>
+               
                   <Profile />
+          
                 </ProtectedRoutes>
               }
             />
@@ -56,6 +60,7 @@ function App() {
             <Route path="/profile" element={<ProtectedRoutes><Profile /></ProtectedRoutes>} />
           </Routes>
         </BrowserRouter>
+       
       </AuthContextProvider>
     </div>
   );
