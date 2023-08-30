@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import TweetsList from './TweetsList';
 import TweetForm from './TweetForm';
 import "react-toastify/dist/ReactToastify.css";
-import { RiProfileLine, RiBookmarkLine, RiSettingsLine } from 'react-icons/ri';
+import { RiProfileLine, RiBookmarkLine } from 'react-icons/ri';
 
 const Dashboard = () => {
   const { user, logout } = UserAuth();
@@ -47,9 +47,7 @@ const Dashboard = () => {
         <div className="text-gray-600 hover:text-blue-500">
           <RiBookmarkLine size={24} />
         </div>
-        <div className="text-gray-600 hover:text-blue-500">
-          <RiSettingsLine size={24} />
-        </div>
+        
       </div>
 
       </div>
