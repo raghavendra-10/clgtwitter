@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { db } from '../firebaseConfig';
-import { collection, addDoc } from "firebase/firestore";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { collection, addDoc } from 'firebase/firestore';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const TweetForm = ({ user }) => {
+const TweetForm = ({ user, profilePhotoURL, onClose }) => {
   const [tweet, setTweet] = useState('');
 
   const handleSubmit = async (e) => {
@@ -18,28 +18,40 @@ const TweetForm = ({ user }) => {
         createdAt: new Date(),
       });
       setTweet('');
-      toast.success("Tweeted Successfully");
+      toast.success('Tweeted Successfully');
+      onClose(); // Close the modal after successful tweet
     } catch (error) {
       toast.error(error.message);
     }
   };
 
   return (
-    <div className="p-4 bg-white rounded-md shadow-md">
+    <div className="">
       <form onSubmit={handleSubmit}>
+        {profilePhotoURL && (
+          <img src={profilePhotoURL} alt="Profile" className="w-12 h-12 rounded-full mr-3" />
+        )}
         <textarea
           value={tweet}
           onChange={(e) => setTweet(e.target.value)}
           placeholder="What's on your mind?"
           rows={6}
-          className="w-full p-2 border rounded-md resize-none focus:outline-none focus:border-blue-500"
+          className="w-full h-58 p-2 border rounded-md resize-none focus:outline-none focus:border-blue-500"
+          required
         />
         <div className="flex justify-end mt-2">
           <button
-            type="submit"
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+            type="button"
+            className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400"
+            onClick={onClose}
           >
-            Tweet
+            Close
+          </button>
+          <button
+            type="submit"
+            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 ml-2"
+          >
+            Go
           </button>
         </div>
       </form>

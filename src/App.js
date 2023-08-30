@@ -8,15 +8,15 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import Profile from "./components/Profile";
 import TweetForm from "./components/TweetForm";
 import TweetsList from "./components/TweetsList";
-
-
-
+import StudentProfile from "./components/StudentProfile";
 
 function App() {
 
   return (
     <div className="App">
+  
       <AuthContextProvider>
+      
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -36,7 +36,19 @@ function App() {
               path="/profile"
               element={
                 <ProtectedRoutes>
+               
                   <Profile />
+          
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/studentprofile"
+              element={
+                <ProtectedRoutes>
+               
+                  <StudentProfile/>
+          
                 </ProtectedRoutes>
               }
             />
@@ -59,6 +71,7 @@ function App() {
             <Route path="/profile" element={<ProtectedRoutes><Profile /></ProtectedRoutes>} />
           </Routes>
         </BrowserRouter>
+       
       </AuthContextProvider>
     </div>
   );
