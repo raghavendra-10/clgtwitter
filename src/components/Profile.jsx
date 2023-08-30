@@ -8,8 +8,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa"; // Import the spinner icon
+import Logo from "../assests/BG.jpeg";
 
 const Profile = () => {
+  
   const { user } = UserAuth();
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [profilePhotoURL, setProfilePhotoURL] = useState(null);
@@ -70,7 +72,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 "style={{ backgroundImage: `url(${Logo})` }}>
       <div className="bg-white w-full max-w-sm p-6 rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold mb-4">Edit Profile</h2>
         <div className="mb-6">
@@ -120,7 +122,7 @@ const Profile = () => {
             </div>
           ) : (
           
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center "style={{ backgroundImage: `url(${Logo})` }}>
               <div className="w-32 h-32 mx-auto rounded-full overflow-hidden">
                 <img
                   src={profilePhotoURL||"https://via.placeholder.com/50"}

@@ -31,10 +31,11 @@ const Dashboard = () => {
           </h1>
           <div className="flex flex-col sm:flex-row gap-4 ">
             <p className="text-md">{user && user.email}</p>
-            <button className="bg-green-400 px-2 py-1 rounded hover:text-white" onClick={handleLogout}>
-              Logout
-            </button>
+            
           </div>
+          <div className="align-middle"><button className="bg-green-400 px-2 py-1 rounded hover:text-white" onClick={handleLogout}>
+              Logout
+            </button></div>
         </div>
         <div className="h-screen overflow-y-auto">
           <TweetsList />
@@ -43,7 +44,7 @@ const Dashboard = () => {
         <div className="fixed bottom-0 left-0 right-0 bg-white shadow-md p-4 flex justify-around">
           <div className="text-gray-600 hover:text-blue-500">
             <Link to="/studentprofile">
-              <RiProfileLine size={24} />
+              <RiProfileLine  size={24} />
             </Link>
           </div>
           <div className="text-gray-600 hover:text-blue-500">
@@ -52,7 +53,7 @@ const Dashboard = () => {
           <div className="text-gray-600 hover:text-blue-500">
             <RiBookmarkLine size={24} />
           </div>
-          <div className="text-gray-600 hover:text-blue-500" onClick={() => setShowTweetForm(true)}>
+          <div className="text-gray-600 hover:text-blue-500 cursor-pointer" onClick={() => setShowTweetForm(true)}>
             Go
           </div>
         </div>

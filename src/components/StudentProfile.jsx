@@ -6,6 +6,7 @@ import { getDocs, where, query } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Logo from "../assests/BG.jpeg"
 
 const StudentProfile = () => {
   const { user } = UserAuth();
@@ -29,7 +30,7 @@ const StudentProfile = () => {
   }, [user.uid]);
 
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center "style={{ backgroundImage: `url(${Logo})` }}>
     <div className="bg-white rounded-lg shadow-md w-96 p-6 space-y-6">
       <div className="relative flex items-center justify-center space-x-4">
         <Link to="/dashboard">
