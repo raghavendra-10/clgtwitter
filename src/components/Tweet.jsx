@@ -1,6 +1,38 @@
-import React from 'react';
+import React,{useState} from 'react';
+import { AiOutlineLike, AiOutlineShareAlt, AiOutlineEllipsis } from 'react-icons/ai';
+import { db } from '../firebaseConfig';
+import { doc, deleteDoc } from 'firebase/firestore';
+import { UserAuth } from '../context/AuthContext';
 
-const Tweet = ({ username, content, timestamp,profilePhotoURL}) => {
+
+const Tweet = ({ id, username, content, timestamp, profilePhotoURL, authorId}) => {
+  const [likeCount, setLikeCount] = useState(0);
+  const [showOptions, setShowOptions] = useState(false);
+  const {user}=UserAuth();
+  const handleLike = () => {
+    setLikeCount(likeCount + 1);
+  };
+  const handleOptionsClick = () => {
+    setShowOptions(!showOptions);
+  };
+
+  const handleDelete = async () => {
+    try {
+      if (user.uid === authorId) {
+        const tweetRef = doc(db, 'tweets', id);
+        await deleteDoc(tweetRef);
+        // Perform any additional cleanup or actions after deletion
+      } else {
+        // Handle unauthorized delete attempt
+      }
+    } catch (error) {
+      console.error('Error deleting tweet:', error);
+    }
+  };
+  const handleInfo = async () => {
+    console.log("info")
+  }
+
   return (
     <div className="bg-white p-4 border rounded-lg shadow-md transition duration-50 ease-out hover:ease-in hover:border-navy-300 hover:border-2 mb-4">
       <div className="flex items-start">
@@ -13,16 +45,45 @@ const Tweet = ({ username, content, timestamp,profilePhotoURL}) => {
         <div className="flex-grow">
           <div className="flex items-center justify-between">
             <p className="text-gray-800 font-semibold">{username}</p>
-            
+            <div className="relative">
+              {user.uid===authorId ?(
+                <div>
+                <button className="text-gray-600 hover:text-gray-800" onClick={handleOptionsClick}>
+                <AiOutlineEllipsis size={25}/>
+              </button>
+             
+              {showOptions && (
+                <div className="absolute right-0 mt-2 bg-white border rounded-lg shadow-lg">
+                  <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={handleDelete}>
+                    Delete
+                  </button>
+                </div>
+              )}
+              </div>
+              ):(
+                <div>
+                <button className="text-gray-600 hover:text-gray-800" onClick={handleOptionsClick}>
+                <AiOutlineEllipsis size={25}/>
+              </button>
+              {showOptions && (
+                <div className="absolute right-0 mt-2 bg-white border rounded-lg shadow-lg">
+                  <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={handleInfo}>
+                    info
+                  </button>
+                </div>
+              )}
+              </div>
+              )}
+              
+            </div>
           </div>
           <p className="text-gray-700 mt-1">{content}</p>
           <div className="mt-2 flex">
-            <button className="text-blue-500 hover:underline text-sm">
-              Like
+            <button className="text-blue-500 hover:underline text-sm" onClick={handleLike}>
+              <AiOutlineLike /> Like ({likeCount})
             </button>
-
             <button className="text-gray-500 hover:underline text-sm ml-4">
-              Share
+              <AiOutlineShareAlt /> Share
             </button>
             <p className="text-gray-600 text-sm px-2">{timestamp}</p>
           </div>

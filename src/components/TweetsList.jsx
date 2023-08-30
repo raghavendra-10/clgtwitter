@@ -52,9 +52,12 @@ const TweetsList = () => {
       {tweets.map((tweet) => (
         <Tweet
           key={tweet.id}
+          id={tweet.id}
           username={tweet.authorEmail}
           content={tweet.content}
           profilePhotoURL={tweet.profilePhotoURL}
+          authorId={tweet.authorId}
+          
           timestamp={tweet.createdAt?.toDate().toLocaleString()} // Adding optional chaining
         />
       ))}

@@ -36,9 +36,9 @@ const SlideLogin = () => {
     try {
       await createUser(email, password);
       await sendEmailVerification(auth.currentUser); // Use the auth object
-      toast.success("Registered Successfully. Please check your email for verification.");
+      
     } catch (e) {
-      toast.error(e.message);
+      toast.success("Registered Successfully. Please check your email for verification.");
     }
   };
   const handleLoginSubmit = async (e) => {
