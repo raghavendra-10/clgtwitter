@@ -50,13 +50,13 @@ const Dashboard = () => {
   return (
     <div className="flex">
       <div className="flex-grow p-4 max-w-screen ">
-        <div className="flex justify-between py-2 sticky top-0 backdrop-blur-lg ">
+        <div className="flex justify-between py-2 bg-white sticky top-0 ">
           <h1 className={`text-white font-medium text-xl sm:text-3xl duration-300 origin-center`}>
             <span className="text-green-600">DI</span>
             <span className="text-blue-500">VULGE</span>
           </h1>
           <div className='flex flex-col gap-2 sm:flex-row'>
-          <div className="flex py-2">
+          <div className="flex py-2 mx-auto">
             <p className="text-sm sm:text-md">{username}</p>
             
           </div>

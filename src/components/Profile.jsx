@@ -3,6 +3,7 @@ import { db, storage } from "../firebaseConfig";
 import {
   collection,
   doc,
+  addDoc,
   updateDoc,
   getDocs,
   where,
@@ -13,8 +14,8 @@ import { UserAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaSpinner } from "react-icons/fa"; // Import the spinner icon
 import Logo from "../assests/BG.jpeg";
 
@@ -76,6 +77,13 @@ const Profile = () => {
         });
 
         toast.success("Profile updated successfully");
+      } else {
+        await addDoc(profilesCollection, {
+          uid:user.uid,
+          profilePhotoURL: photoURL,
+        });
+
+        toast.success("Profile created successfully");
       }
     } catch (error) {
       setIsUploading(false); // Set upload status to false on error
@@ -107,6 +115,13 @@ const Profile = () => {
         });
 
         toast.success("Profile updated successfully");
+      } else {
+        await addDoc(profilesCollection,{
+          uid: user.uid,
+          username : username ,
+          bio :  bio,
+        });
+        toast.success("Profile created successfully");
       }
     } catch (error) {
       setIsUploading(false); // Set upload status to false on error
@@ -130,8 +145,13 @@ const Profile = () => {
       style={{ backgroundImage: `url(${Logo})` }}
     >
       <div className="bg-white w-full max-w-sm p-6 rounded-lg shadow-md">
-      <Link to="/studentprofile">
-          <FontAwesomeIcon icon={faUser} size="lg" className="text-gray-600  top-0 left-0 mt-2 ml-2 cursor-pointer" /> <p className="text-gray-600 ">go to profile</p>
+        <Link to="/studentprofile">
+          <FontAwesomeIcon
+            icon={faUser}
+            size="lg"
+            className="text-gray-600  top-0 left-0 mt-2 ml-2 cursor-pointer"
+          />{" "}
+          <p className="text-gray-600 ">go to profile</p>
         </Link>
         <h2 className="text-2xl font-semibold mb-4">Edit Profile</h2>
         <div className="mb-6">
@@ -193,7 +213,6 @@ const Profile = () => {
                 onChange={handleFileChange}
                 id="profile-photo-input"
               />
-              
             </div>
           ) : (
             <div
