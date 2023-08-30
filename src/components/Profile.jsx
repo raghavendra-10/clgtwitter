@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { db, storage } from "../firebaseConfig";
 import {
   collection,
- 
   doc,
   updateDoc,
   getDocs,
@@ -13,8 +12,11 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { UserAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { Link } from "react-router-dom";
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FaSpinner } from "react-icons/fa"; // Import the spinner icon
+import Logo from "../assests/BG.jpeg";
 
 const Profile = () => {
   const { user } = UserAuth();
@@ -23,6 +25,7 @@ const Profile = () => {
   const [selectedFileName, setSelectedFileName] = useState("");
   const [isUploading, setIsUploading] = useState(false); // New state for upload status
   const [bio, setBio] = useState("");
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     async function fetchProfilePhotoURL() {
@@ -35,12 +38,13 @@ const Profile = () => {
       if (!querySnapshot.empty) {
         const profileData = querySnapshot.docs[0].data();
         setProfilePhotoURL(profileData.profilePhotoURL);
+        setUsername(profileData.username || "");
         setBio(profileData.bio || "");
       }
     }
 
     fetchProfilePhotoURL();
-  }, [user.uid,profilePhotoURL]);
+  }, [user.uid, profilePhotoURL]);
 
   const handlePhotoUpload = async () => {
     if (!profilePhoto || !user?.uid) return;
@@ -57,7 +61,10 @@ const Profile = () => {
       setIsUploading(false); // Set upload status to false after successful upload
 
       const profilesCollection = collection(db, "profiles");
-      const profileQuery = query(profilesCollection, where("uid", "==", user.uid));
+      const profileQuery = query(
+        profilesCollection,
+        where("uid", "==", user.uid)
+      );
       const profileSnapshot = await getDocs(profileQuery);
       if (!profileSnapshot.empty) {
         const profileDoc = profileSnapshot.docs[0];
@@ -66,6 +73,36 @@ const Profile = () => {
         // Update the document with the new photo URL and bio
         await updateDoc(profileDocRef, {
           profilePhotoURL: photoURL,
+        });
+
+        toast.success("Profile updated successfully");
+      }
+    } catch (error) {
+      setIsUploading(false); // Set upload status to false on error
+
+      console.error("Error adding data to Firestore:", error);
+      toast.error(error);
+    }
+  };
+  const handleBioUpload = async () => {
+    if (!user?.uid) return;
+
+    try {
+      // Set upload status to false after successful upload
+
+      const profilesCollection = collection(db, "profiles");
+      const profileQuery = query(
+        profilesCollection,
+        where("uid", "==", user.uid)
+      );
+      const profileSnapshot = await getDocs(profileQuery);
+      if (!profileSnapshot.empty) {
+        const profileDoc = profileSnapshot.docs[0];
+        const profileDocRef = doc(db, "profiles", profileDoc.id);
+
+        // Update the document with the new photo URL and bio
+        await updateDoc(profileDocRef, {
+          username: username,
           bio: bio,
         });
 
@@ -88,8 +125,14 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div
+      className="flex flex-col items-center justify-center min-h-screen bg-gray-100 "
+      style={{ backgroundImage: `url(${Logo})` }}
+    >
       <div className="bg-white w-full max-w-sm p-6 rounded-lg shadow-md">
+      <Link to="/studentprofile">
+          <FontAwesomeIcon icon={faUser} size="lg" className="text-gray-600  top-0 left-0 mt-2 ml-2 cursor-pointer" /> <p className="text-gray-600 ">go to profile</p>
+        </Link>
         <h2 className="text-2xl font-semibold mb-4">Edit Profile</h2>
         <div className="mb-6">
           {profilePhotoURL ? (
@@ -101,27 +144,8 @@ const Profile = () => {
                   className="object-cover w-full h-full"
                 />
               </div>
-              <textarea
-                placeholder="Enter your bio..."
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
-                className="mt-2 p-2 border rounded-md w-full"
-              ></textarea>
-              <label
-                htmlFor="profile-photo-input"
-                className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-green-400 mt-2"
-              >
-                Change Profile Photo
-              </label>
-              <input
-                type="file"
-                accept="image/*"
-                className="hidden"
-                onChange={handleFileChange}
-                id="profile-photo-input"
-              />
               {selectedFileName && (
-                <div className="flex items-center mt-2">
+                <div className="flex flex-col items-center mt-2">
                   <p className="text-gray-500 mr-2">
                     Selected File: {selectedFileName}
                   </p>
@@ -140,9 +164,42 @@ const Profile = () => {
                   </button>
                 </div>
               )}
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="mt-1 p-2 border rounded-md w-full"
+              />
+              <label htmlFor="bio">Bio</label>
+              <textarea
+                placeholder="Enter your bio..."
+                value={bio}
+                id="bio"
+                onChange={(e) => setBio(e.target.value)}
+                className="mt-2 p-2 border rounded-md w-full"
+              ></textarea>
+              <label
+                htmlFor="profile-photo-input"
+                className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-green-400 mt-2"
+              >
+                Change Profile Photo
+              </label>
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleFileChange}
+                id="profile-photo-input"
+              />
+              
             </div>
           ) : (
-            <div className="flex flex-col items-center">
+            <div
+              className="flex flex-col items-center "
+              style={{ backgroundImage: `url(${Logo})` }}
+            >
               <div className="w-32 h-32 mx-auto rounded-full overflow-hidden">
                 <img
                   src={profilePhotoURL || "https://via.placeholder.com/50"}
@@ -188,23 +245,19 @@ const Profile = () => {
           )}
         </div>
 
-      
         <button
-            onClick={() => {
-              handlePhotoUpload();
-              window.location.href = "/studentprofile";
-            }}
-            className="bg-blue-500 hover:bg-green-400 text-white px-4 py-2 rounded-lg self-end"
-          >
-            {isUploading ? (
-              <>
-                Saving <FaSpinner className="animate-spin ml-1" />
-              </>
-            ) : (
-              "Save"
-            )}
-          </button>
-     
+          onClick={handleBioUpload}
+          className="bg-blue-500 hover:bg-green-400 text-white px-4 py-2 rounded-lg self-end"
+        >
+          {isUploading ? (
+            <>
+              Saving <FaSpinner className="animate-spin ml-1" />
+            </>
+          ) : (
+            "Save"
+          )}
+        </button>
+
         {/* Additional form fields for other details */}
       </div>
     </div>

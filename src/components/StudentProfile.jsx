@@ -4,14 +4,14 @@ import { db } from '../firebaseConfig';
 import { collection } from 'firebase/firestore';
 import { getDocs, where, query } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import Logo from "../assests/BG.jpeg"
 
 const StudentProfile = () => {
   const { user } = UserAuth();
   const [profilePhotoURL, setProfilePhotoURL] = useState(null);
   const [bio, setBio] = useState("");
-
+  const [username, setUsername] = useState("");
   useEffect(() => {
     async function fetchProfilePhotoURL() {
       if (!user.uid) return;
@@ -23,6 +23,7 @@ const StudentProfile = () => {
       if (!querySnapshot.empty) {
         const profileData = querySnapshot.docs[0].data();
         setProfilePhotoURL(profileData.profilePhotoURL);
+        setUsername(profileData.username || "");
         setBio(profileData.bio || "");
       }
     }
@@ -33,11 +34,11 @@ const StudentProfile = () => {
   }, [user.uid]);
   
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center "style={{ backgroundImage: `url(${Logo})` }}>
     <div className="bg-white rounded-lg shadow-md w-96 p-6 space-y-6">
       <div className="relative flex items-center justify-center space-x-4">
         <Link to="/dashboard">
-          <FontAwesomeIcon icon={faUser} size="lg" className="text-gray-600 absolute top-0 left-0 mt-2 ml-2 cursor-pointer" />
+        <p className="text-gray-600 absolute top-0 left-0  cursor-pointer" >back</p>
         </Link>
         <div className="w-32 h-32 flex rounded-full overflow-hidden bg-gray-300">
           <img
@@ -54,6 +55,12 @@ const StudentProfile = () => {
       </div>
       <div className="text-center">
         <p className="text-gray-500 mt-2">{user.email}</p>
+      </div>
+      <div>
+        <h2 className="text-lg font-semibold">Username</h2>
+        <p className="text-gray-600">
+          {username}
+        </p>
       </div>
       <div>
         <h2 className="text-lg font-semibold">Bio</h2>

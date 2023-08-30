@@ -14,14 +14,14 @@ const Navbar = () => {
         <li>
             <Link
               to="/aboutus"
-              className="text-white sm:text-xl hover:text-blue-200 transition duration-300"> 
+              className="text-xl bg-transparent border border-blue-500 text-black hover:bg-blue-500 hover:text-white py-2 px-(-2) rounded"> 
               AboutUs
             </Link>
           </li>
           <li>
             <Link
               to="/register"
-              className="text-white sm:text-xl hover:text-blue-200 transition duration-300"
+              className="text-xl bg-transparent border border-blue-500 text-black hover:bg-blue-500 hover:text-white py-2 px-4 rounded"
             >
               SignUp/SignIn
             </Link>

@@ -23,6 +23,7 @@ function App() {
             <Route path="/register" element={<SlideLogin />} />
             
             
+            
             <Route
               path="/dashboard"
               element={
