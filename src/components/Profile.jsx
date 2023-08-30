@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { db, storage } from "../firebaseConfig";
-import { collection, addDoc } from "firebase/firestore";
+import {
+  collection,
+ 
+  doc,
+  updateDoc,
+  getDocs,
+  where,
+  query,
+} from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { getDocs, where, query } from "firebase/firestore";
 import { UserAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
+
 import { FaSpinner } from "react-icons/fa"; // Import the spinner icon
 
 const Profile = () => {
@@ -15,6 +22,7 @@ const Profile = () => {
   const [profilePhotoURL, setProfilePhotoURL] = useState(null);
   const [selectedFileName, setSelectedFileName] = useState("");
   const [isUploading, setIsUploading] = useState(false); // New state for upload status
+  const [bio, setBio] = useState("");
 
   useEffect(() => {
     async function fetchProfilePhotoURL() {
@@ -27,11 +35,12 @@ const Profile = () => {
       if (!querySnapshot.empty) {
         const profileData = querySnapshot.docs[0].data();
         setProfilePhotoURL(profileData.profilePhotoURL);
+        setBio(profileData.bio || "");
       }
     }
 
     fetchProfilePhotoURL();
-  }, [user.uid]);
+  }, [user.uid,profilePhotoURL]);
 
   const handlePhotoUpload = async () => {
     if (!profilePhoto || !user?.uid) return;
@@ -48,11 +57,20 @@ const Profile = () => {
       setIsUploading(false); // Set upload status to false after successful upload
 
       const profilesCollection = collection(db, "profiles");
-      await addDoc(profilesCollection, {
-        uid: user.uid,
-        profilePhotoURL: photoURL,
-      });
-      toast.success("Successfully uploaded");
+      const profileQuery = query(profilesCollection, where("uid", "==", user.uid));
+      const profileSnapshot = await getDocs(profileQuery);
+      if (!profileSnapshot.empty) {
+        const profileDoc = profileSnapshot.docs[0];
+        const profileDocRef = doc(db, "profiles", profileDoc.id);
+
+        // Update the document with the new photo URL and bio
+        await updateDoc(profileDocRef, {
+          profilePhotoURL: photoURL,
+          bio: bio,
+        });
+
+        toast.success("Profile updated successfully");
+      }
     } catch (error) {
       setIsUploading(false); // Set upload status to false on error
 
@@ -83,7 +101,12 @@ const Profile = () => {
                   className="object-cover w-full h-full"
                 />
               </div>
-
+              <textarea
+                placeholder="Enter your bio..."
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                className="mt-2 p-2 border rounded-md w-full"
+              ></textarea>
               <label
                 htmlFor="profile-photo-input"
                 className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-green-400 mt-2"
@@ -119,11 +142,10 @@ const Profile = () => {
               )}
             </div>
           ) : (
-          
-              <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center">
               <div className="w-32 h-32 mx-auto rounded-full overflow-hidden">
                 <img
-                  src={profilePhotoURL||"https://via.placeholder.com/50"}
+                  src={profilePhotoURL || "https://via.placeholder.com/50"}
                   alt="Profile"
                   className="object-cover w-full h-full"
                 />
@@ -141,7 +163,7 @@ const Profile = () => {
               >
                 Add Profile Photo
               </label>
-              
+
               {selectedFileName && (
                 <div className="flex items-center mt-2">
                   <p className="text-gray-500 mr-2">
@@ -156,24 +178,33 @@ const Profile = () => {
                       <>
                         Uploading <FaSpinner className="animate-spin ml-1" />
                       </>
-                    
                     ) : (
                       "Upload"
                     )}
                   </button>
                 </div>
-                
               )}
-              </div>
-
+            </div>
           )}
         </div>
 
-        <Link to="/studentprofile">
-          <button className="bg-blue-500 hover:bg-green-400 text-white px-4 py-2 rounded-lg self-end">
-            Save
+      
+        <button
+            onClick={() => {
+              handlePhotoUpload();
+              window.location.href = "/studentprofile";
+            }}
+            className="bg-blue-500 hover:bg-green-400 text-white px-4 py-2 rounded-lg self-end"
+          >
+            {isUploading ? (
+              <>
+                Saving <FaSpinner className="animate-spin ml-1" />
+              </>
+            ) : (
+              "Save"
+            )}
           </button>
-        </Link>
+     
         {/* Additional form fields for other details */}
       </div>
     </div>

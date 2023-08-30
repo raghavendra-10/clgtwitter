@@ -9,8 +9,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const StudentProfile = () => {
   const { user } = UserAuth();
-
   const [profilePhotoURL, setProfilePhotoURL] = useState(null);
+  const [bio, setBio] = useState("");
+
   useEffect(() => {
     async function fetchProfilePhotoURL() {
       if (!user.uid) return;
@@ -22,12 +23,15 @@ const StudentProfile = () => {
       if (!querySnapshot.empty) {
         const profileData = querySnapshot.docs[0].data();
         setProfilePhotoURL(profileData.profilePhotoURL);
+        setBio(profileData.bio || "");
       }
     }
 
     fetchProfilePhotoURL();
-  }, [user.uid]);
 
+
+  }, [user.uid]);
+  
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
     <div className="bg-white rounded-lg shadow-md w-96 p-6 space-y-6">
@@ -54,7 +58,7 @@ const StudentProfile = () => {
       <div>
         <h2 className="text-lg font-semibold">Bio</h2>
         <p className="text-gray-600">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed nulla vitae eros aliquet eleifend.
+          {bio}
         </p>
       </div>
       {/* Other profile information */}
