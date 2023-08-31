@@ -9,6 +9,7 @@ import Profile from "./components/Profile";
 import TweetForm from "./components/TweetForm";
 import TweetsList from "./components/TweetsList";
 import StudentProfile from "./components/StudentProfile";
+import Tabs from "./components/Tabs";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<SlideLogin />} />
+            <Route path="/aboutus" element={<Tabs/>} />
             
             
             
