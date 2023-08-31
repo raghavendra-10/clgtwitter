@@ -79,7 +79,7 @@ const Tweet = ({
               )}
             </div>
           </div>
-          <div className="flex-grow">
+          <div className="flex-grow w-full">
             <p className="text-gray-700 mt-1">{content}</p>
             {tweetPhotoURL && (
               <img

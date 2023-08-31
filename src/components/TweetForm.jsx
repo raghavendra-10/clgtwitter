@@ -8,12 +8,13 @@ import { BsImage } from "react-icons/bs";
 import { FcCheckmark } from "react-icons/fc";
 import { FaSpinner } from "react-icons/fa";
 import { getDocs, where, query } from 'firebase/firestore';
-const TweetForm = ({ user, profilePhotoURL, onClose }) => {
+const TweetForm = ({ user, onClose }) => {
   const [tweet, setTweet] = useState("");
   const [tweetPhoto, setTweetPhoto] = useState(null);
   const inputFileRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState('');
+  const [profilePhotoURL, setProfilePhotoURL] = useState(null);
   useEffect(() => {
     async function fetchProfilePhotoURL() {
       if (!user.uid) return;
@@ -24,6 +25,7 @@ const TweetForm = ({ user, profilePhotoURL, onClose }) => {
 
       if (!querySnapshot.empty) {
         const profileData = querySnapshot.docs[0].data();
+        setProfilePhotoURL(profileData.profilePhotoURL);
         setUsername(profileData.username || '');
       }
     }
@@ -51,6 +53,7 @@ const TweetForm = ({ user, profilePhotoURL, onClose }) => {
         createdAt: new Date(),
         username: username, 
         tweetPhotoURL: tweetPhotoURL,
+        profilePhotoURL:profilePhotoURL,
       });
 
       setTweet("");
@@ -73,13 +76,13 @@ const TweetForm = ({ user, profilePhotoURL, onClose }) => {
   return (
     <div className="">
       <form onSubmit={handleSubmit}>
-        {profilePhotoURL && (
+        {/* {profilePhotoURL && (
           <img
             src={profilePhotoURL}
             alt="Profile"
             className="w-12 h-12 rounded-full mr-3"
           />
-        )}
+        )} */}
 
         <textarea
           value={tweet}
