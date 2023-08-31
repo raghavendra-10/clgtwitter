@@ -10,6 +10,10 @@ import TweetForm from "./components/TweetForm";
 import TweetsList from "./components/TweetsList";
 import StudentProfile from "./components/StudentProfile";
 import Tabs from "./components/Tabs";
+import AdminDashboard from "./components/AdminDashboard";
+
+import CalenderDashboard from "./components/CalenderDashboard";
+
 
 function App() {
 
@@ -31,6 +35,22 @@ function App() {
               element={
                 <ProtectedRoutes>
                   <Dashboard />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/admindashboard"
+              element={
+                <ProtectedRoutes>
+                  <AdminDashboard />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/calenderdashboard"
+              element={
+                <ProtectedRoutes>
+                  <CalenderDashboard/>
                 </ProtectedRoutes>
               }
             />

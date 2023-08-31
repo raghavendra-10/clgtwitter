@@ -2,21 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import TweetsList from "./TweetsList";
-import TweetForm from "./TweetForm";
+
 import { SiPhpmyadmin } from "react-icons/si";
 import { RiProfileLine, RiBookmarkLine } from "react-icons/ri";
 import { db } from "../firebaseConfig";
 import { collection } from "firebase/firestore";
 import { getDocs, where, query } from "firebase/firestore";
-import { LuMessagesSquare } from "react-icons/lu";
+
 import { PiBellRingingDuotone } from "react-icons/pi";
 import { AiFillHome } from "react-icons/ai";
+import CalendarComponent from "./CalanderComponent";
 
-const Dashboard = () => {
+const CalenderDashboard = () => {
   const { user, logout } = UserAuth();
   const navigate = useNavigate();
-  const [showTweetForm, setShowTweetForm] = useState(false);
+
   const [username, setUsername] = useState("");
   const [adminUid, setAdminUid] = useState("");
 
@@ -87,8 +87,8 @@ const Dashboard = () => {
         </div>
 
         <div className="mb-8 pb-8 mt-8 pt-8">
-          <TweetsList adminUid={adminUid} />
-          <div className="text-center mt-4"></div>
+          <CalendarComponent />
+          
         </div>
 
         <div className="fixed bottom-0 left-0 right-0 bg-white shadow-md p-4 flex justify-around">
@@ -113,26 +113,12 @@ const Dashboard = () => {
           <div className="text-gray-600 hover:text-blue-500">
             <RiBookmarkLine size={24} />
           </div>
-          <div
-            className="fixed text-white cursor-pointer text-xl px-3 py-3 bottom-[100px] right-4 transform translate-y-1/2 bg-blue-400 shadow-md rounded-md hover:bg-blue-600"
-            onClick={() => setShowTweetForm(true)}
-          >
-            <button className="h-2">
-              <LuMessagesSquare size={19} />
-            </button>
-          </div>
+          
         </div>
       </div>
 
-      {showTweetForm && (
-        <div className="fixed backdrop-blur-md inset-0 flex justify-center items-center bg-gray-800 z-50">
-          <div className="bg-white p-4 rounded-md shadow-md w-2/3">
-            <TweetForm user={user} onClose={() => setShowTweetForm(false)} />
-          </div>
-        </div>
-      )}
     </div>
   );
 };
 
-export default Dashboard;
+export default CalenderDashboard;

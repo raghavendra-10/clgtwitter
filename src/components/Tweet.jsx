@@ -12,6 +12,7 @@ const Tweet = ({
   profilePhotoURL,
   tweetPhotoURL,
   authorId,
+  adminUid,
 }) => {
   const [showOptions, setShowOptions] = useState(false);
   const { user } = UserAuth();
@@ -23,7 +24,7 @@ const Tweet = ({
 
   const handleDelete = async () => {
     try {
-      if (user.uid === authorId) {
+      if (user.uid === authorId || user.uid===adminUid) {
         const tweetRef = doc(db, "tweets", id);
         await deleteDoc(tweetRef);
       } else {
@@ -43,8 +44,9 @@ const Tweet = ({
   const handleTweetPhotoClick = () => {
     setIsTweetPhotoExpanded(!isTweetPhotoExpanded);
   };
+  
   return (
-    <div className="bg-white p-2 sm:p-5 border rounded-lg shadow-md transition duration-50 ease-out hover:ease-in hover:border-navy-300 hover:border-2 mb-4">
+    <div className={`${adminUid===authorId ? 'bg-green-100' : 'bg-white'} p-2 sm:p-5 border rounded-lg shadow-md transition duration-50 ease-out hover:ease-in hover:border-navy-300 hover:border-2 mb-4`}>
       <div className="flex items-start">
         <img
           className="w-20 h-20 cursor-pointer object-cover rounded-full mr-2"
@@ -71,9 +73,9 @@ const Tweet = ({
                 <div className="absolute right-0 mt-2 bg-white border rounded-lg shadow-lg">
                   <button
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    onClick={user.uid === authorId ? handleDelete : handleInfo}
+                    onClick={user.uid === authorId || user.uid===adminUid ? handleDelete : handleInfo}
                   >
-                    {user.uid === authorId ? "Delete" : "Info"}
+                    {user.uid === authorId || user.uid===adminUid ? "Delete" : "Info"}
                   </button>
                 </div>
               )}

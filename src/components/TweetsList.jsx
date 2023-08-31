@@ -6,7 +6,7 @@ import { getDocs, where, query } from 'firebase/firestore';
 
 import Tweet from './Tweet';
 
-const TweetsList = () => {
+const TweetsList = ({adminUid}) => {
   const [tweets, setTweets] = useState([]);
 
   const showNotification = useCallback((newTweetsCount) => {
@@ -86,6 +86,7 @@ const TweetsList = () => {
           profilePhotoURL={tweet.profilePhotoURL}
           authorId={tweet.authorId}
           tweetPhotoURL={tweet.tweetPhotoURL}
+          adminUid={adminUid}
           timestamp={tweet.createdAt?.toDate().toLocaleString()} // Adding optional chaining
         />
       ))}

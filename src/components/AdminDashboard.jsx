@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import TweetsList from "./TweetsList";
+import { AiFillHome } from "react-icons/ai";
 import TweetForm from "./TweetForm";
 import { SiPhpmyadmin } from "react-icons/si";
 import { RiProfileLine, RiBookmarkLine } from "react-icons/ri";
@@ -11,9 +11,9 @@ import { collection } from "firebase/firestore";
 import { getDocs, where, query } from "firebase/firestore";
 import { LuMessagesSquare } from "react-icons/lu";
 import { PiBellRingingDuotone } from "react-icons/pi";
-import { AiFillHome } from "react-icons/ai";
+import AdminTweetsList from "./AdminTweetsList";
 
-const Dashboard = () => {
+const AdminDashboard = () => {
   const { user, logout } = UserAuth();
   const navigate = useNavigate();
   const [showTweetForm, setShowTweetForm] = useState(false);
@@ -52,7 +52,7 @@ const Dashboard = () => {
         if (!adminsQuerySnapshot.empty) {
           const adminData = adminsQuerySnapshot.docs[0].data();
           setAdminUid(adminData.adminUid || "");
-          
+         
         }
       } catch (error) {
         console.error("Error fetching admin UID:", error);
@@ -87,7 +87,7 @@ const Dashboard = () => {
         </div>
 
         <div className="mb-8 pb-8 mt-8 pt-8">
-          <TweetsList adminUid={adminUid} />
+          <AdminTweetsList />
           <div className="text-center mt-4"></div>
         </div>
 
@@ -108,7 +108,7 @@ const Dashboard = () => {
             </Link>
           </div>
           <div className="text-gray-600 hover:text-blue-500">
-            <Link to="/calenderdashboard"><PiBellRingingDuotone size={24} /></Link>
+          <Link to="/calenderdashboard"><PiBellRingingDuotone size={24} /></Link>
           </div>
           <div className="text-gray-600 hover:text-blue-500">
             <RiBookmarkLine size={24} />
@@ -135,4 +135,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default AdminDashboard;

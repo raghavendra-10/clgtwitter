@@ -1,0 +1,21 @@
+/* Add your own styling here */
+.calendar-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .rbc-calendar {
+    min-height: 500px;
+  }
+  
+  .rbc-header {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .rbc-event {
+    background-color: #3174ad;
+    color: white;
+  }
+  
