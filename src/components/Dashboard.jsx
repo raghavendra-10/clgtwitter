@@ -55,16 +55,15 @@ const Dashboard = () => {
             <span className="text-green-600">DI</span>
             <span className="text-blue-500">VULGE</span>
           </h1>
-          <div className='flex flex-col gap-2 sm:flex-row'>
-          <div className="flex py-2 mx-auto">
-            <p className="text-sm sm:text-md">{username}</p>
-            
-          </div>
-          <div className="flex justify-end">
-            <button className="bg-green-400 px-2 py-1 rounded hover:text-white" onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
+          
+            <div className="flex py-2 mx-auto">
+              <p className="text-sm sm:text-md">{username}</p>
+            </div>
+            <div className="flex justify-end">
+              <button className="bg-green-400 px-2 py-1 rounded hover:text-white" onClick={handleLogout}>
+                Logout
+              </button>
+        
           </div>
         </div>
         <div className="h-screen">
