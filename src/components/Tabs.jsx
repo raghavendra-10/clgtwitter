@@ -20,7 +20,7 @@ function Tabs() {
   const ProfileTabContent = (
     <div>
       <h2>Profile</h2>
-      {/* Add photo upload and edit UI here */}
+      
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis eum similique...</p>
     </div>
   );
