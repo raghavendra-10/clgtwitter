@@ -16,7 +16,7 @@ const TweetsList = () => {
         querySnapshot.docs.map(async (tweetDoc) => {
           const tweetData = tweetDoc.data();
           const authorUid = tweetData.authorId;
-
+          console.log(tweetData)
           // Fetch the profile photo URL for the user based on UID
           const profilesCollection = collection(db, 'profiles');
           const q = query(profilesCollection, where('uid', '==', authorUid));
@@ -32,7 +32,9 @@ const TweetsList = () => {
             id: tweetDoc.id,
             ...tweetData,
             profilePhotoURL,
+           
           };
+          
         })
       );
 

@@ -24,6 +24,7 @@ const TweetForm = ({ user, profilePhotoURL, onClose }) => {
         createdAt: new Date(),
         tweetPhotoURL: tweetPhotoURL, 
       });
+
       setTweet('');
       setTweetPhoto(null);
       toast.success('Tweeted Successfully');

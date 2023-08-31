@@ -57,7 +57,7 @@ const Dashboard = () => {
           </h1>
           
             <div className="flex py-2 mx-auto">
-              <p className="text-sm sm:text-md">{username}</p>
+              <p className="text-sm font-semibold sm:text-lg">{username}</p>
             </div>
             <div className="flex justify-end">
               <button className="bg-green-400 px-2 py-1 rounded hover:text-white" onClick={handleLogout}>
