@@ -56,7 +56,7 @@ const TweetForm = ({ user, profilePhotoURL, onClose }) => {
       setTweet("");
       setTweetPhoto(null);
       toast.success("Tweeted Successfully");
-      onClose(); // Close the modal after successful tweet
+      onClose();
     } catch (error) {
       toast.error(error.message);
     } finally {
