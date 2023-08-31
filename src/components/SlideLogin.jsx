@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,19 +7,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { UserAuth } from "../context/AuthContext";
 import { auth } from "../firebaseConfig";
-import { sendEmailVerification,sendPasswordResetEmail } from "firebase/auth";
-
-// import {
-//   createUserWithEmailAndPassword,
-//   signInWithEmailAndPassword,
-// } from "firebase/auth";
+import { sendEmailVerification } from "firebase/auth";
+import { FaSpinner } from "react-icons/fa";
 import "./login.css";
-// import { FaFacebookF, FaGoogle, FaTwitter } from "react-icons/fa";
 
 const SlideLogin = () => {
   const [isSignup, setIsSignup] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -32,20 +27,30 @@ const SlideLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]*@vishnu\.edu\.in$/.test(email)) {
+      toast.error(
+        "Please enter a valid email address ending with @vishnu.edu.in"
+      );
+      return;
+    }
+    setIsLoading(true);
     try {
       await createUser(email, password);
       await sendEmailVerification(auth.currentUser); // Use the auth object
-      
     } catch (e) {
-      toast.success("Registered Successfully. Please check your email for verification.");
+      toast.success(
+        "Registered Successfully. Please check your email for verification."
+      );
+    } finally {
+      setIsLoading(false);
     }
   };
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       await signIn(loginEmail, loginPassword);
-  
+
       const user = auth.currentUser;
       if (user && !user.emailVerified) {
         toast.warning("Please verify your email before logging in.");
@@ -54,20 +59,22 @@ const SlideLogin = () => {
       }
     } catch (e) {
       toast.error(e.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const toggleForm = () => {
     setIsSignup(!isSignup);
   };
-  const handleForgotPassword = async () => {
-    try {
-      await sendPasswordResetEmail(loginEmail);
-      toast.success("Password reset email sent. Check your inbox.");
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
+  // const handleForgotPassword = async () => {
+  //   try {
+  //     await sendPasswordResetEmail(loginEmail);
+  //     toast.success("Password reset email sent. Check your inbox.");
+  //   } catch (error) {
+  //     toast.error(error.message);
+  //   }
+  // };
 
   return (
     <div className="body">
@@ -80,19 +87,6 @@ const SlideLogin = () => {
           </div>
           <form className="form" onSubmit={handleSubmit}>
             <h1 className="h1 sm:text-3xl">Create Account</h1>
-            {/* <div className="flex social-cont">
-              <a href="/" className="a social">
-                <FaFacebookF />
-              </a>
-              <a href="/" className="a social">
-                <FaGoogle />
-              </a>
-              <a href="/" className="a social">
-                <FaTwitter />
-              </a>
-            </div> */}
-            {/* <span className="span">or use your email for registration</span> */}
-            {/* <input className="input" type="text" name="name" value={email}  placeholder="Name" /> */}
             <input
               className="input  "
               type="email"
@@ -111,8 +105,12 @@ const SlideLogin = () => {
               }}
               placeholder="Password"
             />
-            <button className="button" type="submit">
-              SignUp
+            <button className="button" type="submit" disabled={isLoading}>
+              {isLoading ? (<>
+                        <FaSpinner size={20} className="animate-spin ml-1" />
+                      </>): (
+                        "Sign Up"
+                      )}
             </button>
           </form>
         </div>
@@ -124,18 +122,7 @@ const SlideLogin = () => {
           </div>
           <form onSubmit={handleLoginSubmit} className="form">
             <h1 className="h1 sm:text-3xl">Sign In</h1>
-            {/* <div className="flex social-cont">
-              <a href="/" className="a social">
-                <FaFacebookF />
-              </a>
-              <a href="/" className="a social">
-                <FaGoogle />
-              </a>
-              <a href="/" className="a social">
-                <FaTwitter />
-              </a>
-            </div> */}
-            {/* <span className="span">or use your account</span> */}
+
             <input
               className="input "
               type="email"
@@ -154,11 +141,15 @@ const SlideLogin = () => {
               }}
               placeholder="Password"
             />
-            <button className="text-[12px]" onClick={handleForgotPassword}>
+            {/* <button className="text-[12px]" onClick={handleForgotPassword}>
             Forgot Your Password?
-          </button>
-            <button className="button" type="submit">
-              Sign In
+          </button> */}
+            <button className="button" type="submit" disabled={isLoading}>
+              {isLoading ? (<>
+                        <FaSpinner size={20} className="animate-spin ml-1" />
+                      </>): (
+                        "Sign In"
+                      )}
             </button>
           </form>
         </div>

@@ -6,22 +6,22 @@ const Navbar = () => {
   return (
     <div className="bg-blue-500 py-4">
       <nav className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center">
+        <div className="flex px-2 items-center">
           <img src={Logo} alt="Divulge Logo" className="h-8  rounded-full w-8 mr-2" />
           <h1 className="text-white text-lg sm:text-3xl font-semibold">DIVULGE</h1>
         </div>
-        <ul className="flex space-x-2 sm:space-x-4 over">
+        <ul className="flex gap-2 sm:text-xl sm:space-x-4 over">
         <li>
             <Link
               to="/aboutus"
-              className="text-xl bg-transparent border border-blue-500 text-black hover:bg-blue-500 hover:text-white py-2 px-(-2) rounded"> 
+              className=" bg-transparent border border-blue-500 text-black hover:bg-blue-500 hover:text-white py-2  rounded"> 
               AboutUs
             </Link>
           </li>
           <li>
             <Link
               to="/register"
-              className="text-xl bg-transparent border border-blue-500 text-black hover:bg-blue-500 hover:text-white py-2 px-4 rounded"
+              className=" bg-transparent border border-blue-500 text-black hover:bg-blue-500 hover:text-white py-2rounded"
             >
               SignUp/SignIn
             </Link>
