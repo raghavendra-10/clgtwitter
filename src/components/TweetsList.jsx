@@ -43,6 +43,12 @@ const TweetsList = () => {
             const profileData = profileQuerySnapshot.docs[0].data();
             profilePhotoURL = profileData.profilePhotoURL;
           }
+          if ('Notification' in window) {
+            // Request permission when component mounts
+            if (Notification.permission !== 'granted') {
+              showNotification(0); // 0 indicates no new tweets, just to ask for permission
+            }
+          }
 
           return {
             id: tweetDoc.id,
@@ -50,6 +56,7 @@ const TweetsList = () => {
             profilePhotoURL,
            
           };
+          
           
         })
       );
