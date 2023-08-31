@@ -108,7 +108,7 @@ const TweetForm = ({ user, profilePhotoURL, onClose }) => {
               onChange={(e) => setTweetPhoto(e.target.files[0])}
             />
           </div>
-          <div className="flex gap-[2px]">
+          <div className="flex gap-2">
             <button
               type="button"
               className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400"

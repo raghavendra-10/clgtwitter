@@ -86,7 +86,7 @@ const Dashboard = () => {
             <RiBookmarkLine size={24} />
         </div>
         <div className="fixed text-white cursor-pointer text-xl px-3 py-3 bottom-[100px] right-4 transform translate-y-1/2 bg-blue-400 shadow-md rounded-md hover:bg-blue-600" onClick={() => setShowTweetForm(true)}>
-            <button className="h-2"><LuMessagesSquare className="ml-1" /></button>
+            <button className="h-2"><LuMessagesSquare size={24} /></button>
         </div>
       </div>
       </div>
