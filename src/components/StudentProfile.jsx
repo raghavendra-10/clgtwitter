@@ -4,6 +4,7 @@ import { db } from '../firebaseConfig';
 import { collection } from 'firebase/firestore';
 import { getDocs, where, query } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
+import {IoMdArrowRoundBack} from "react-icons/io"
 
 import Logo from "../assests/BG.jpeg"
 
@@ -38,7 +39,7 @@ const StudentProfile = () => {
     <div className="bg-white rounded-lg shadow-md w-96 p-6 space-y-6">
       <div className="relative flex items-center justify-center space-x-4">
         <Link to="/dashboard">
-        <p className="text-gray-600 absolute top-0 left-0  cursor-pointer" >back</p>
+        <p className="text-gray-600 absolute top-0 left-0  cursor-pointer" ><IoMdArrowRoundBack size={24}/></p>
         </Link>
         <div className="w-32 h-32 flex rounded-full overflow-hidden bg-gray-300">
           <img

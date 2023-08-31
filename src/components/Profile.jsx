@@ -151,9 +151,9 @@ const Profile = () => {
             size="lg"
             className="text-gray-600  top-0 left-0 mt-2 ml-2 cursor-pointer"
           />{" "}
-          <p className="text-gray-600 ">go to profile</p>
+         
         </Link>
-        <h2 className="text-2xl font-semibold mb-4">Edit Profile</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-center">Edit Profile</h2>
         <div className="mb-6">
           {profilePhotoURL ? (
             <div className="flex flex-col items-center">
