@@ -67,8 +67,8 @@ const TweetForm = ({ user, profilePhotoURL, onClose }) => {
               <BsImage className="upload-icon text-xl" />
             </div>
             {tweetPhoto && (
-              <span className="ml-2 flex gap-2  text-gray-500 text-md">Added
-              {<FcCheckmark className="text-2xl"/>}
+              <span className="ml-2 flex gap-2  text-gray-500 text-md">
+              {<FcCheckmark size={19}/>}
               </span>
             )}
             <input
@@ -79,7 +79,7 @@ const TweetForm = ({ user, profilePhotoURL, onClose }) => {
               onChange={(e) => setTweetPhoto(e.target.files[0])}
             />
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-0">
             <button
               type="button"
               className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400"

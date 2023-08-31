@@ -48,7 +48,7 @@ const Dashboard = () => {
   return (
     <div className="flex">
       <div className="flex-grow p-4 max-w-screen ">
-        <div className="flex justify-between py-2 bg-white sticky top-0 shadow-md">
+        <div className="fixed top-0 left-0 right-0 bg-white shadow-md p-4 flex justify-around">
           <h1 className={`text-white font-medium text-xl sm:text-3xl duration-300 origin-center`}>
             <span className="text-green-600">DI</span>
             <span className="text-blue-500">VULGE</span>
@@ -65,8 +65,8 @@ const Dashboard = () => {
           </div>
         </div>
         
-        <div className="h-screen">
-          <TweetsList />
+        <div className="mb-8 pb-8 mt-8 pt-8">
+          <TweetsList/>
           <div className="text-center mt-4"></div>
         </div>
         
@@ -86,7 +86,7 @@ const Dashboard = () => {
             <RiBookmarkLine size={24} />
         </div>
         <div className="fixed text-white cursor-pointer text-xl px-3 py-3 bottom-[100px] right-4 transform translate-y-1/2 bg-blue-400 shadow-md rounded-md hover:bg-blue-600" onClick={() => setShowTweetForm(true)}>
-            <button className="h-2"><LuMessagesSquare size={24} /></button>
+            <button className="h-2"><LuMessagesSquare size={19} /></button>
         </div>
       </div>
       </div>
