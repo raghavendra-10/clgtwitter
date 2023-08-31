@@ -12,7 +12,7 @@ import {
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { UserAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import { Link } from "react-router-dom";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -215,10 +215,8 @@ const Profile = () => {
               />
             </div>
           ) : (
-            <div
-              className="flex flex-col items-center "
-              style={{ backgroundImage: `url(${Logo})` }}
-            >
+          
+              <div className="flex flex-col items-center "style={{ backgroundImage: `url(${Logo})` }}>
               <div className="w-32 h-32 mx-auto rounded-full overflow-hidden">
                 <img
                   src={profilePhotoURL || "https://via.placeholder.com/50"}
