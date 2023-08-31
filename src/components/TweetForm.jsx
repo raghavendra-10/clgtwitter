@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { BsImage } from 'react-icons/bs';
+import { FcCheckmark} from 'react-icons/fc';
+
 
 const TweetForm = ({ user, profilePhotoURL, onClose }) => {
   const [tweet, setTweet] = useState('');
@@ -65,7 +67,9 @@ const TweetForm = ({ user, profilePhotoURL, onClose }) => {
               <BsImage className="upload-icon text-xl" />
             </div>
             {tweetPhoto && (
-              <span className="ml-2 text-sm">{tweetPhoto.name}</span>
+              <span className="ml-2 flex gap-2  text-gray-500 text-md">Added
+              {<FcCheckmark className="text-2xl"/>}
+              </span>
             )}
             <input
               type="file"
