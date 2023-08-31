@@ -4,7 +4,7 @@ import { db } from '../firebaseConfig';
 import { doc, deleteDoc } from 'firebase/firestore';
 import { UserAuth } from '../context/AuthContext';
 
-const Tweet = ({ id, username, content, timestamp, profilePhotoURL, authorId }) => {
+const Tweet = ({ id, username, content, timestamp, profilePhotoURL, tweetPhotoURL, authorId }) => {
   const [showOptions, setShowOptions] = useState(false);
   const { user } = UserAuth();
 
@@ -60,6 +60,9 @@ const Tweet = ({ id, username, content, timestamp, profilePhotoURL, authorId }) 
           </div>
           <div className="flex-grow">
             <p className="text-gray-700 mt-1">{content}</p>
+            {tweetPhotoURL && (
+            <img src={tweetPhotoURL} alt="Tweet" className="mt-2 rounded-md max-h-72" />
+          )}
           </div>
           <p className="text-gray-600 text-sm mt-2">{timestamp}</p>
         </div>

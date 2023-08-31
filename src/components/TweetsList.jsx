@@ -57,7 +57,7 @@ const TweetsList = () => {
           content={tweet.content}
           profilePhotoURL={tweet.profilePhotoURL}
           authorId={tweet.authorId}
-          
+          tweetPhotoURL={tweet.tweetPhotoURL}
           timestamp={tweet.createdAt?.toDate().toLocaleString()} // Adding optional chaining
         />
       ))}
