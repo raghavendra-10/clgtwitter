@@ -59,9 +59,7 @@ const StudentProfile = () => {
             )}
           </div>
         </div>
-        <div className="text-center">
-          <p className="text-gray-500 mt-2">{user.email}</p>
-        </div>
+        
         <div>
           <h2 className="text-lg font-semibold">Username</h2>
           <p className="text-gray-600">{username}</p>
