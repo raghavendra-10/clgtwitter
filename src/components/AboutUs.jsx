@@ -1,5 +1,5 @@
 import React from 'react';
-import "./profile.css"
+import "./about.css"
 import "./queries.css"
 import JB from "../assests/JanBasha.png"
 import R from "../assests/Raghavendra-fotor-2023090619483.png"
@@ -282,3 +282,4 @@ function Portfolio() {
 }
 
 export default Portfolio;
+

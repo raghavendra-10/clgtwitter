@@ -275,6 +275,9 @@ const Profile = () => {
             "Save"
           )}
         </button>
+        <button className="bg-blue-500 hover:bg-green-400 text-white px-4 py-2 rounded-lg">Add Projects
+
+        </button>
 
         {/* Additional form fields for other details */}
       </div>
