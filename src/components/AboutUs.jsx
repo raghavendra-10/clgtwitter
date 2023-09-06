@@ -87,7 +87,7 @@ function Portfolio() {
           borderColor: 'black',
           height: '3px',
         }}
-      />
+      /><br/>
 
       {/* Raghavendra */}
         {/* Nitin */}
@@ -139,7 +139,7 @@ function Portfolio() {
           borderColor: 'black',
           height: '3px',
         }}
-      />
+      /><br/>
 
       {/* Raghavendra */}
         {/* Ramdas */}
@@ -191,7 +191,7 @@ function Portfolio() {
           borderColor: 'black',
           height: '3px',
         }}
-      />
+      /><br/>
 
       {/* Raghavendra */}
         <section id="profile">
@@ -242,7 +242,7 @@ function Portfolio() {
           borderColor: 'black',
           height: '3px',
         }}
-      />
+      /><br/>
 
       {/* Teja */}
         <section id="profile">
@@ -293,7 +293,7 @@ function Portfolio() {
           borderColor: 'black',
           height: '3px',
         }}
-      />
+      /><br/>
 
         <section id="contact">
           <p className="section__text__p1">Get in Touch</p>
