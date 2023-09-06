@@ -12,8 +12,8 @@ import { Link } from "react-router-dom";
 function Portfolio() {
   return (
     <div>
-        <div className="bg-blue-500 py-4">
-        <nav className="container mx-auto flex justify-between items-center">
+        <div className="bg-blue-500 py-4 mb-4">
+        <nav className="container mx-auto flex justify-between items-center ">
           <div className="flex px-2 items-center">
             <img src={Logo} alt="Divulge Logo" className="h-8  rounded-full w-8 mr-2" />
             <h1 className="text-white text-lg sm:text-3xl font-semibold">DIVULGE</h1>
@@ -42,12 +42,12 @@ function Portfolio() {
         
           <section id="profile">
           <div className="section__pic-container">
-            <img src={JB} alt="" />
+            <img src={N} alt="" />
           </div>
           <div className="section__text">
             <p className="section__text__p1">Hello, I'm</p>
-            <h1 className="title">SHAIK JOHNBASHA</h1>
-            <p className="section__text__p2">Frontend Developer</p>
+            <h1 className="title">NITIN SIGILIPELLI</h1>
+            <p className="section__text__p2">Android App Developer</p>
             <div className="btn-container">
               <button
                 className="btn btn-color-2"
@@ -66,17 +66,11 @@ function Portfolio() {
           <p className="section__text__p1">Get To Know More</p>
           <h1 className="title">About Me</h1>
           <div className="section-container">
-            
-            
                 <p className="Para">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-                  reprehenderit et laborum, rem, dolore eum quod voluptate
-                  exercitationem nobis, nihil esse debitis maxime facere minus sint
-                  delectus velit in eos quo officiis explicabo deleniti dignissimos.
-                  Eligendi illum libero dolorum cum laboriosam corrupti quidem,
-                  reiciendis ea magnam? Nulla, impedit fuga!
-                </p>
-              
+                  
+                I'm an Android app developer, well-versed in the dynamic world of Android Studio and proficient in the art of Java programming. In my creative journey, I sculpted an app that not only illuminates but also transforms the user experience, pushing the boundaries of what's possible in the realm of mobile technology.
+                <br/>DIVULGE - College Communication App
+                </p> 
             
           </div>
         </section>
@@ -94,11 +88,57 @@ function Portfolio() {
         {/* Nitin */}
         <section id="profile">
           <div className="section__pic-container">
-            <img src={N} alt="" />
+            <img src={R} alt="" />
           </div>
           <div className="section__text">
             <p className="section__text__p1">Hello, I'm</p>
-            <h1 className="title">Nitin</h1>
+            <h1 className="title">VATTIKUTI RAGHAVENDRA</h1>
+            <p className="section__text__p2">Full Stack Web Developer</p>
+            <div className="btn-container">
+              <button
+                className="btn btn-color-2"
+                
+              >
+                LinkedIn
+              </button>
+              <button className="btn btn-color-1" onClick={() => window.location.href = './#contact'}>
+                GitHub
+              </button>
+            </div>
+            
+          </div>
+        </section>
+        <section id="about">
+          <p className="section__text__p1">Get To Know More</p>
+          <h1 className="title">About Me</h1>
+          <div className="section-container">
+            
+            
+                <p className="Para">
+                I'm a full-stack web developer, navigating the intricate landscapes of web development with ease. I've harnessed a versatile skill set that encompasses both front-end and back-end technologies, weaving them together seamlessly. In my coding odyssey, I've crafted web applications that not only captivate but also revolutionize the online experience, pushing the boundaries of what's achievable in the digital realm.
+                </p>
+              
+            
+          </div>
+        </section>
+        <br/>
+        <hr
+        style={{
+          background: 'black',
+          color: 'black',
+          borderColor: 'black',
+          height: '3px',
+        }}
+      /><br/>
+
+      
+        <section id="profile">
+          <div className="section__pic-container">
+            <img src={JB} alt="" />
+          </div>
+          <div className="section__text">
+            <p className="section__text__p1">Hello, I'm</p>
+            <h1 className="title">SHAIK JOHN BASHA</h1>
             <p className="section__text__p2">Frontend Developer</p>
             <div className="btn-container">
               <button
@@ -121,12 +161,7 @@ function Portfolio() {
             
             
                 <p className="Para">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-                  reprehenderit et laborum, rem, dolore eum quod voluptate
-                  exercitationem nobis, nihil esse debitis maxime facere minus sint
-                  delectus velit in eos quo officiis explicabo deleniti dignissimos.
-                  Eligendi illum libero dolorum cum laboriosam corrupti quidem,
-                  reiciendis ea magnam? Nulla, impedit fuga!
+                I'm a front-end developer, skilled in crafting captivating and user-centric web interfaces. With a keen eye for design and expertise in HTML, CSS, and JavaScript, I've sculpted digital experiences that not only engage but also redefine user expectations. In my creative journey, I've built websites that blend artistry and functionality, pushing the boundaries of what's possible in the realm of user interface design.I'm created beautiful responsive web pages.  
                 </p>
               
             
@@ -143,15 +178,14 @@ function Portfolio() {
       /><br/>
 
       {/* Raghavendra */}
-        {/* Ramdas */}
         <section id="profile">
           <div className="section__pic-container">
             <img src={Ra} alt="" />
           </div>
           <div className="section__text">
             <p className="section__text__p1">Hello, I'm</p>
-            <h1 className="title">Ramdas</h1>
-            <p className="section__text__p2">Frontend Developer</p>
+            <h1 className="title">RAMDASU</h1>
+            <p className="section__text__p2">Frontend Developer </p>
             <div className="btn-container">
               <button
                 className="btn btn-color-2"
@@ -173,63 +207,7 @@ function Portfolio() {
             
             
                 <p className="Para">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-                  reprehenderit et laborum, rem, dolore eum quod voluptate
-                  exercitationem nobis, nihil esse debitis maxime facere minus sint
-                  delectus velit in eos quo officiis explicabo deleniti dignissimos.
-                  Eligendi illum libero dolorum cum laboriosam corrupti quidem,
-                  reiciendis ea magnam? Nulla, impedit fuga!
-                </p>
-              
-            
-          </div>
-        </section>
-        <br/>
-        <hr
-        style={{
-          background: 'black',
-          color: 'black',
-          borderColor: 'black',
-          height: '3px',
-        }}
-      /><br/>
-
-      {/* Raghavendra */}
-        <section id="profile">
-          <div className="section__pic-container">
-            <img src={R} alt="" />
-          </div>
-          <div className="section__text">
-            <p className="section__text__p1">Hello, I'm</p>
-            <h1 className="title">SHAIK JOHNBASHA</h1>
-            <p className="section__text__p2">Frontend Developer</p>
-            <div className="btn-container">
-              <button
-                className="btn btn-color-2"
-                
-              >
-                LinkedIn
-              </button>
-              <button className="btn btn-color-1" onClick={() => window.location.href = './#contact'}>
-                GitHub
-              </button>
-            </div>
-            
-          </div>
-        </section>
-        <section id="about">
-          <p className="section__text__p1">Get To Know More</p>
-          <h1 className="title">About Me</h1>
-          <div className="section-container">
-            
-            
-                <p className="Para">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-                  reprehenderit et laborum, rem, dolore eum quod voluptate
-                  exercitationem nobis, nihil esse debitis maxime facere minus sint
-                  delectus velit in eos quo officiis explicabo deleniti dignissimos.
-                  Eligendi illum libero dolorum cum laboriosam corrupti quidem,
-                  reiciendis ea magnam? Nulla, impedit fuga!
+                I'm a front-end developer, skilled in crafting captivating and user-centric web interfaces. With a keen eye for design and expertise in HTML, CSS, and JavaScript, I've sculpted digital experiences that not only engage but also redefine user expectations. In my creative journey, I've built websites that blend artistry and functionality, pushing the boundaries of what's possible in the realm of user interface design.
                 </p>
               
             
@@ -275,12 +253,7 @@ function Portfolio() {
             
             
                 <p className="Para">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-                  reprehenderit et laborum, rem, dolore eum quod voluptate
-                  exercitationem nobis, nihil esse debitis maxime facere minus sint
-                  delectus velit in eos quo officiis explicabo deleniti dignissimos.
-                  Eligendi illum libero dolorum cum laboriosam corrupti quidem,
-                  reiciendis ea magnam? Nulla, impedit fuga!
+                I'm a front-end developer, skilled in crafting captivating and user-centric web interfaces. With a keen eye for design and expertise in HTML, CSS, and JavaScript, I've sculpted digital experiences that not only engage but also redefine user expectations. In my creative journey, I've built websites that blend artistry and functionality, pushing the boundaries of what's possible in the realm of user interface design.
                 </p>
               
             
@@ -296,13 +269,15 @@ function Portfolio() {
         }}
       /><br/>
 
+        
+        <footer>
         <section id="contact">
           <p className="section__text__p1">Get in Touch</p>
           <h1 className="title">Contact Me</h1>
           <div className="contact-info-upper-container">
             <div className="contact-info-container">
               
-              <p><a href="mailto:examplemail@gmail.com">Example@gmail.com</a></p>
+              <p><a href="mailto:examplemail@gmail.com">divulge2023-25@gmail.com</a></p>
             </div>
             <div className="contact-info-container">
               
@@ -310,16 +285,6 @@ function Portfolio() {
             </div>
           </div>
         </section>
-        <footer>
-          <nav>
-            <div className="nav-links-container">
-              <ul className="nav-links">
-                <li><a href="#about">About</a></li>
-                
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </div>
-          </nav>
           <p>Copyright &#169; 2023 DIVULGE. All Rights Reserved.</p>
         </footer>
     </div>
