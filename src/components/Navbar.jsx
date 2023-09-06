@@ -21,7 +21,7 @@ const Navbar = () => {
           <li>
             <Link
               to="/register"
-              className=" bg-transparent border border-blue-500 text-black hover:bg-blue-500 hover:text-white py-2rounded"
+              className=" bg-transparent border border-blue-500 text-black hover:bg-blue-500 hover:text-white py-2 rounded"
             >
               SignUp/SignIn
             </Link>
