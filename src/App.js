@@ -9,7 +9,7 @@ import Profile from "./components/Profile";
 import TweetForm from "./components/TweetForm";
 import TweetsList from "./components/TweetsList";
 import StudentProfile from "./components/StudentProfile";
-import Tabs from "./components/Tabs";
+import AboutUs from "./components/AboutUs"
 import AdminDashboard from "./components/AdminDashboard";
 
 import CalenderDashboard from "./components/CalenderDashboard";
@@ -29,7 +29,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<SlideLogin />} />
-            <Route path="/aboutus" element={<Tabs/>} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            
             
             
             
