@@ -38,6 +38,7 @@ function Portfolio() {
           </ul>
         </nav>
     </div>
+    <br/>
         
           <section id="profile">
           <div className="section__pic-container">
@@ -54,7 +55,7 @@ function Portfolio() {
               >
                 LinkedIn
               </button>
-              <button className="btn btn-color-1" onClick={() => window.location.href = './#contact'}>
+              <button className="btn btn-color-1">
                 GitHub
               </button>
             </div>

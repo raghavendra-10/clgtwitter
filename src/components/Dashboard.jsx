@@ -9,11 +9,12 @@ import { RiProfileLine, RiBookmarkLine } from "react-icons/ri";
 import { db } from "../firebaseConfig";
 import { collection } from "firebase/firestore";
 import { getDocs, where, query } from "firebase/firestore";
-import { LuMessagesSquare } from "react-icons/lu";
+
 import { PiBellRingingDuotone } from "react-icons/pi";
 import { AiFillHome } from "react-icons/ai";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {BiMessageDetail} from "react-icons/bi"
 const Dashboard = () => {
   const { user, logout } = UserAuth();
   const navigate = useNavigate();
@@ -129,7 +130,7 @@ const Dashboard = () => {
             onClick={handleTweetClick}
           >
             <button className="h-2">
-              <LuMessagesSquare size={19} />
+              <BiMessageDetail size={19} />
             </button>
           </div>
         </div>
