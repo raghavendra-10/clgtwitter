@@ -11,13 +11,7 @@ const Navbar = () => {
           <h1 className="text-white text-lg sm:text-3xl font-semibold">DIVULGE</h1>
         </div>
         <ul className="flex gap-2 sm:text-xl sm:space-x-4 over">
-        <li>
-            <Link
-              to="/"
-              className=" bg-transparent border border-blue-500 text-black hover:bg-blue-500 hover:text-white py-2  rounded"> 
-              Home
-            </Link>
-          </li>
+          
         <li>
             <Link
               to="/aboutus"
