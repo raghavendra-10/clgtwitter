@@ -78,7 +78,7 @@ function App() {
               }
             />
             <Route
-              path="/studentprofile"
+              path="/profile/:authorId"
               element={
                 <ProtectedRoutes>
                

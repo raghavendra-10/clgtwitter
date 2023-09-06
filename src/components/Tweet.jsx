@@ -6,7 +6,7 @@ import { UserAuth } from "../context/AuthContext";
 import ExpandedImage from "./ExpandedImage";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { toast } from 'react-toastify'; // Import toast for notifications
-
+import { Link } from "react-router-dom";
 const Tweet = ({
   id,
   username,
@@ -99,7 +99,7 @@ const Tweet = ({
         <div className="flex-grow">
           <div className="flex items-center justify-between">
             <p className="text-gray-800 text-[14px] sm:text-md font-semibold">
-              {username}
+            <Link to={`/profile/${authorId}`}> {username}</Link>
             </p>
             <div className="flex flex-col items-center">
               <button

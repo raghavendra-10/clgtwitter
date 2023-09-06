@@ -146,7 +146,7 @@ const Profile = () => {
       style={{ backgroundImage: `url(${Logo})` }}
     >
       <div className="bg-white w-full max-w-sm p-6 rounded-lg shadow-md">
-        <Link to="/studentprofile">
+      <Link to={`/profile/${user.uid}`}>
           <FontAwesomeIcon
             icon={faUser}
             size="lg"

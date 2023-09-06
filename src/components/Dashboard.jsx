@@ -107,7 +107,7 @@ const Dashboard = () => {
             </Link>
           </div>
           <div className="text-gray-600 hover:text-blue-500">
-            <Link to="/studentprofile">
+          <Link to={`/profile/${user.uid}`}>
               <RiProfileLine size={24} />
             </Link>
           </div>
