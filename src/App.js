@@ -14,6 +14,9 @@ import AdminDashboard from "./components/AdminDashboard";
 
 import CalenderDashboard from "./components/CalenderDashboard";
 
+import BookmarkDashboard from "./components/BookmarkDashboard";
+
+
 
 function App() {
 
@@ -47,6 +50,14 @@ function App() {
               }
             />
             <Route
+              path="/bookmarks"
+              element={
+                <ProtectedRoutes>
+                  <BookmarkDashboard />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
               path="/calenderdashboard"
               element={
                 <ProtectedRoutes>
@@ -54,6 +65,8 @@ function App() {
                 </ProtectedRoutes>
               }
             />
+            
+           
             <Route
               path="/profile"
               element={

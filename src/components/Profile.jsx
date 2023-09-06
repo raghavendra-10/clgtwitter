@@ -27,6 +27,7 @@ const Profile = () => {
   const [isUploading, setIsUploading] = useState(false); // New state for upload status
   const [bio, setBio] = useState("");
   const [username, setUsername] = useState("");
+  
 
   useEffect(() => {
     async function fetchProfilePhotoURL() {

@@ -89,8 +89,9 @@ const TweetForm = ({ user, onClose }) => {
           onChange={(e) => setTweet(e.target.value)}
           placeholder="What's on your mind?"
           rows={6}
-          className="w-full h-58 p-2 border rounded-md resize-none focus:outline-none focus:border-blue-500"
+          className="w-full h-58 p-2 border rounded-md break-words resize-none focus:outline-none focus:border-blue-500"
           required
+          style={{ wordWrap: 'break-word' }}
         />
         <div className="flex justify-between w-full">
           <div className="relative flex items-center">

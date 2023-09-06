@@ -111,7 +111,9 @@ const AdminDashboard = () => {
           <Link to="/calenderdashboard"><PiBellRingingDuotone size={24} /></Link>
           </div>
           <div className="text-gray-600 hover:text-blue-500">
+            <Link to="/bookmarks">
             <RiBookmarkLine size={24} />
+            </Link>
           </div>
           <div
             className="fixed text-white cursor-pointer text-xl px-3 py-3 bottom-[100px] right-4 transform translate-y-1/2 bg-blue-400 shadow-md rounded-md hover:bg-blue-600"

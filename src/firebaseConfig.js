@@ -1,14 +1,11 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import {getAuth} from "firebase/auth"
-import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
-// import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+
+import "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBjZjDlbKa72rasvUGUGNgkovtyPRKFavk",
   authDomain: "twitter-f6b63.firebaseapp.com",
@@ -16,12 +13,12 @@ const firebaseConfig = {
   storageBucket: "twitter-f6b63.appspot.com",
   messagingSenderId: "592583838979",
   appId: "1:592583838979:web:6a6d86849cc6e6542eed36",
-  measurementId: "G-1JQZLCP186"
+  measurementId: "G-1JQZLCP186",
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
-export default app
+export default app;
 export const auth = getAuth(app);
-export const db = getFirestore(app); 
+export const db = getFirestore(app);
 export const storage = getStorage(app);
