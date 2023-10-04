@@ -1,13 +1,24 @@
 import React from "react";
 import Navbar from "./Navbar";
-import Logo from "../assests/newlogo.png";
 
+import Lottie from "react-lottie";
+import home from ".././components/lottiefile/home.json"
 const Home = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: home,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  }
   return (
     <div>
       <Navbar />
-      <div className="bg-cover bg-center w-full flex justify-center  min-h-screen"style={{ backgroundImage: `url(${Logo})` }}>
+      <div className="bg-cover bg-center w-full flex justify-center  min-h-screen">
+        
         <div className=" flex flex-col items-center justify-center ">
+        <Lottie options={defaultOptions} size={24}/>
           {/* <div className="text-5xl font-bold text-gray-800 mb-4">DIVULGE</div> */}
           <div className="bg-white p-8 rounded-lg shadow-lg text-center">
             <div className="sm:text-5xl font-bold text-gray-800 mb-4">
@@ -20,6 +31,7 @@ const Home = () => {
               Get Started
             </button>
           </div>
+        
         </div>
         {/* <div
           className="bg-cover bg-center w-full  "
