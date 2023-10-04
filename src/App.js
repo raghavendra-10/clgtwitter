@@ -9,31 +9,59 @@ import Profile from "./components/Profile";
 import TweetForm from "./components/TweetForm";
 import TweetsList from "./components/TweetsList";
 import StudentProfile from "./components/StudentProfile";
-import AboutUs from "./components/AboutUs"
+import AboutUs from "./components/AboutUs";
 import AdminDashboard from "./components/AdminDashboard";
 
 import CalenderDashboard from "./components/CalenderDashboard";
 
 import BookmarkDashboard from "./components/BookmarkDashboard";
-
-
+import UserEnrollment from "./components/elearning/UserEnrollment";
+import CourseDetails from "./components/elearning/CourseDetails";
+import AddCourse from "./components/elearning/AddCourse";
+import CourseList from "./components/elearning/CoursesList";
 
 function App() {
-
   return (
     <div className="App">
-  
       <AuthContextProvider>
-      
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<SlideLogin />} />
             <Route path="/aboutus" element={<AboutUs />} />
-            
-            
-            
-            
+
+            <Route
+              path="/enrollments"
+              element={
+                <ProtectedRoutes>
+                  <UserEnrollment />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/courses"
+              element={
+                <ProtectedRoutes>
+                  <CourseList />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/admin/addcourse"
+              element={
+                <ProtectedRoutes>
+                  <AddCourse />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/course/:id"
+              element={
+                <ProtectedRoutes>
+                  <CourseDetails />
+                </ProtectedRoutes>
+              }
+            />
             <Route
               path="/dashboard"
               element={
@@ -62,19 +90,16 @@ function App() {
               path="/calenderdashboard"
               element={
                 <ProtectedRoutes>
-                  <CalenderDashboard/>
+                  <CalenderDashboard />
                 </ProtectedRoutes>
               }
             />
-            
-           
+
             <Route
               path="/profile"
               element={
                 <ProtectedRoutes>
-               
                   <Profile />
-          
                 </ProtectedRoutes>
               }
             />
@@ -82,14 +107,11 @@ function App() {
               path="/profile/:authorId"
               element={
                 <ProtectedRoutes>
-               
-                  <StudentProfile/>
-          
+                  <StudentProfile />
                 </ProtectedRoutes>
               }
             />
             <Route
-             
               element={
                 <ProtectedRoutes>
                   <TweetForm />
@@ -97,17 +119,22 @@ function App() {
               }
             />
             <Route
-             
-             element={
-               <ProtectedRoutes>
-                 <TweetsList/>
-               </ProtectedRoutes>
-             }
-           />
-            <Route path="/profile" element={<ProtectedRoutes><Profile /></ProtectedRoutes>} />
+              element={
+                <ProtectedRoutes>
+                  <TweetsList />
+                </ProtectedRoutes>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoutes>
+                  <Profile />
+                </ProtectedRoutes>
+              }
+            />
           </Routes>
         </BrowserRouter>
-       
       </AuthContextProvider>
     </div>
   );
