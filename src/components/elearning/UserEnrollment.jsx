@@ -25,7 +25,7 @@ const UserEnrollment = ({ user }) => {
 
     return (
         <div>
-            <h1>Enrolled Courses</h1>
+            <h1>Enrolled Courses by user</h1>
             <ul>
                 {enrolledCourses.map(course => (
                     <li key={course.id}>{course.title}</li>
